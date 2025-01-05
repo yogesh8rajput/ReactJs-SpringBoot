@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cat from "./Cat";
 
 class Navbar extends Component{
 
@@ -12,7 +13,7 @@ class Navbar extends Component{
     <li><a href="">HOME</a></li>
     <li><a href="">ABOUT</a></li>
     <li><a href="">CONTACT</a></li>
-    <li><a href="">CATEGORIES</a></li>
+    <li><a href="Cat.jsx">CATEGORIES</a></li>
     <li><a href="">EXTRA</a></li>
 </ul>
 </div>

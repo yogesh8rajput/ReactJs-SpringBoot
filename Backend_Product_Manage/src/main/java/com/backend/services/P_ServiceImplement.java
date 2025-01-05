@@ -42,8 +42,8 @@ public class P_ServiceImplement implements P_Services{
 
 	@Override
 	public Products update(Products products) {
-		// TODO Auto-generated method stub
-		return null;
+		return productRepository.save(products);
+		
 	}
 
 }
