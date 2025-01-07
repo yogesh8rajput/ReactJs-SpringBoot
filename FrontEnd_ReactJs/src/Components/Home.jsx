@@ -43,7 +43,7 @@ const Home = () => {
               <td>₹{product.product_price}</td>
               <td>{product.product_Category}</td>
               <td>{product.product_quantity}</td>
-              <td>{product.product_status ? "Available":"Out"}</td>
+              <td>{product.product_status ? "Available":"Out of Stock"}</td>
               <td>{product.release_date}</td>
             </tr>
           </tbody>
