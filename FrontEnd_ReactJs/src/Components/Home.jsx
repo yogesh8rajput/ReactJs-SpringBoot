@@ -1,51 +1,53 @@
 import axios from "axios";
-import { React, use, useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 
 const Home = () => {
   const [products, setproducts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/products").then((response) => {
-      const productdata = response.data.map((products) => ({
-        id: products.product_id,
-        name: products.product_name,
-        price: products.product_price,
-        quantity: products.product_quantity,
-        status: products.product_status,
-        type: products.product_type,
-      }));
-      setproducts(productdata);
-      // console.log(productdata);
-    });
+    const fetchdata = async () => {
+      try {
+        const response = await axios.get("http://localhost:8090/products");
+        setproducts(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log("error" + error);
+      }
+    };
+
+    fetchdata();
   }, []);
 
   return (
     <>
-      <h1>Products</h1>
-      <table className="border-4 border-black">
-            <thead>
-                <th>product_id</th>
-                <th> product_name</th>
-                <th>product_price</th>
-                <th>product_quantity</th>
-                <th>product_status</th>
-                <th>product_type</th>
-            </thead>
-      {products.map((products, index) => (
-        
-            <tbody key={index}>
-                <tr>
-                    <td>{products.id}</td>
-                    <td>{products.name}</td>
-                    <td>{products.price}</td>
-                    <td>{products.quantity}</td>
-                    <td>{products.status}</td>
-                    <td>{products.type}</td>
-                </tr>
-            </tbody>
-        
-      ))}
+      <table className="w-full border border-black border-collapse">
+        <thead className="border border-black">
+          <th>ID</th>
+          <th>NAME</th>
+          <th>DESCRIPTION</th>
+          <th>BRAND</th>
+          <th>PRICE</th>
+          <th>CATEGORY</th>
+          <th>QUANTITY</th>
+          <th>STATUS</th>
+          <th>DATE</th>
+        </thead>
 
+        {products.map((product) => (
+          <tbody className="border border-black">
+            <tr className=" hover:bg-slate-300">
+              <td>{product.product_id}</td>
+              <td>{product.product_name}</td>
+              <td>{product.product_desc}</td>
+              <td>{product.product_brand}</td>
+              <td>₹{product.product_price}</td>
+              <td>{product.product_Category}</td>
+              <td>{product.product_quantity}</td>
+              <td>{product.product_status}</td>
+              <td>{product.release_date}</td>
+            </tr>
+          </tbody>
+        ))}
       </table>
     </>
   );
