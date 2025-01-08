@@ -1,8 +1,10 @@
 import axios from "axios";
 import { React, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [products, setproducts] = useState([]);
+  const [iserror, setiserror] = useState(false);
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -12,43 +14,45 @@ const Home = () => {
         console.log(response.data);
       } catch (error) {
         console.log("error" + error);
+        setiserror(true);
       }
     };
 
     fetchdata();
   }, []);
 
+  if (iserror) {
+    return (
+      <>
+        <div className="error grid place-items-center h-96">
+          <p className="text-red-600 text-5xl">Something went wrong......</p>
+          <p className="text-pink-950 text-2xl underline">-----Start the Server Please----</p>
+        </div>
+      </>
+    );
+  }
   return (
     <>
-      <table className="w-full border border-black border-collapse">
-        <thead className="border border-black">
-          <th>ID</th>
-          <th>NAME</th>
-          <th>DESCRIPTION</th>
-          <th>BRAND</th>
-          <th>PRICE</th>
-          <th>CATEGORY</th>
-          <th>QUANTITY</th>
-          <th>STATUS</th>
-          <th>DATE</th>
-        </thead>
-
+      <div className="cardbox flex flex-wrap">
         {products.map((product) => (
-          <tbody className="border border-black">
-            <tr className=" hover:bg-slate-300">
-              <td>{product.product_id}</td>
-              <td>{product.product_name}</td>
-              <td>{product.product_desc}</td>
-              <td>{product.product_brand}</td>
-              <td>₹{product.product_price}</td>
-              <td>{product.product_Category}</td>
-              <td>{product.product_quantity}</td>
-              <td>{product.product_status ? "Available":"Out"}</td>
-              <td>{product.release_date}</td>
-            </tr>
-          </tbody>
+          <div className="card bg-slate-100 rounded h-80 w-96 m-5 place-items-center">
+            <h1 className="font-bold text-3xl">{product.product_brand}</h1>
+            <p className="p-2 text-purple-500 text-xl">
+              {product.product_name}
+            </p>
+            {product.release_date}
+            <p className="p-2 font-bold font-mono text-lg text-green-400">
+              ₹{product.product_price}
+            </p>
+            <Link
+              to="/oneproduct"
+              className="bg-blue-500 text-white p-2 rounded font-bold"
+            >
+              Add to Cart
+            </Link>
+          </div>
         ))}
-      </table>
+      </div>
     </>
   );
 };
