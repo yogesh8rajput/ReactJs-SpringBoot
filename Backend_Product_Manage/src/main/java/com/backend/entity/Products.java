@@ -3,6 +3,9 @@ package com.backend.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +24,8 @@ public class Products {
 	private String product_Category;
 	private Integer product_quantity;
 	private Boolean product_status;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-YYYY")
 	private Date release_date;
 	
 	
