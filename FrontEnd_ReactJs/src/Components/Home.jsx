@@ -33,9 +33,10 @@ const Home = () => {
   }
   return (
     <>
-      <div className="cardbox flex flex-wrap">
         {products.map((product) => (
-          <div className="card bg-slate-100 rounded h-80 w-96 m-5 place-items-center">
+    <Link to={`products/${product.product_id}`}>
+      <div className="cardbox flex flex-wrap">
+          <div className="card bg-slate-100 rounded h-80 w-96 p-6 m-5 place-items-center">
             <h1 className="font-bold text-3xl">{product.product_brand}</h1>
             <p className="p-2 text-purple-500 text-xl">
               {product.product_name}
@@ -51,8 +52,9 @@ const Home = () => {
               Add to Cart
             </Link>
           </div>
-        ))}
       </div>
+      </Link>
+        ))}
     </>
   );
 };
