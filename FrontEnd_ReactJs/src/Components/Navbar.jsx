@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Cat from "./Cat";
+import { Link } from "react-router-dom";
+
 
 class Navbar extends Component{
 
@@ -10,10 +11,10 @@ class Navbar extends Component{
 
 <div className='text-5xl'>E-Commerce</div>
 <ul className="flex gap-4 items-center ">
-    <li><a href="">HOME</a></li>
+    <li><Link to="/">HOME</Link></li>
     <li><a href="">ABOUT</a></li>
-    <li><a href="">CONTACT</a></li>
-    <li><a href="Cat.jsx">CATEGORIES</a></li>
+    <li><a href="/">CONTACT</a></li>
+    <li><Link to="/oneproduct">CATEGORIES</Link></li>
     <li><a href="">EXTRA</a></li>
 </ul>
 </div>
