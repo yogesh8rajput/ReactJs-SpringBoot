@@ -1,6 +1,7 @@
 import axios from "axios";
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import img from "../Components/mikku.jpg";
 
 const Home = () => {
   const [products, setproducts] = useState([]);
@@ -24,7 +25,7 @@ const Home = () => {
   if (iserror) {
     return (
       <>
-        <div className="error grid place-items-center h-96">
+        <div className=" grid place-items-center h-96">
           <p className="text-red-600 text-5xl">Something went wrong......</p>
           <p className="text-pink-950 text-2xl underline">-----Start the Server Please----</p>
         </div>
@@ -33,28 +34,47 @@ const Home = () => {
   }
   return (
     <>
+      <div className="cardbox flex flex-wrap bg-slate-500">
         {products.map((product) => (
-    <Link to={`products/${product.product_id}`}>
-      <div className="cardbox flex flex-wrap">
-          <div className="card bg-slate-100 rounded h-80 w-96 p-6 m-5 place-items-center">
+    <Link to={`products/${product.product_id}`} >
+          <div className="card bg-slate-100 rounded p-6 m-5 place-items-center">
             <h1 className="font-bold text-3xl">{product.product_brand}</h1>
             <p className="p-2 text-purple-500 text-xl">
               {product.product_name}
             </p>
-            {product.release_date}
-            <p className="p-2 font-bold font-mono text-lg text-green-400">
+
+<table className="w-full m-4 ">
+
+  <tr>
+    <td>Release Date</td>
+    <td> {product.release_date}</td>
+  </tr>
+
+  <tr>
+  <td> <p className="p-2 font-bold font-mono text-lg text-green-400">
               ₹{product.product_price}
             </p>
+    </td>
+    <td>
+
             <Link
               to="/oneproduct"
               className="bg-blue-500 text-white p-2 rounded font-bold"
             >
               Add to Cart
             </Link>
+    </td>
+  </tr>
+</table>
+
+
+
+
+           
           </div>
-      </div>
       </Link>
         ))}
+        </div>
     </>
   );
 };
