@@ -2609,6 +2609,7 @@ Binding(ALT+SHIFT+D R,
 
 !ENTRY org.springframework.tooling.boot.ls 1 0 2025-01-07 11:59:32.261
 !MESSAGE Classpath changed for project: Backend_Product_Manage
+<<<<<<< HEAD
 =======
 !ENTRY org.eclipse.egit.core 4 0 2025-01-07 23:44:23.830
 !MESSAGE Git team provider configuration has gone missing.
@@ -8862,6 +8863,10 @@ java.nio.file.NoSuchFileException: E:\Product Manage\.metadata\.plugins\org.ecli
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 
 !ENTRY org.eclipse.pde.core 4 0 2025-01-07 23:53:06.307
+=======
+
+!ENTRY org.eclipse.pde.core 4 0 2025-01-07 13:01:57.415
+>>>>>>> fe3862805da69464cba2b8d4a9a6450291f00766
 !MESSAGE FrameworkEvent ERROR
 !STACK 0
 org.osgi.framework.BundleException: Exception in org.eclipse.pde.internal.core.PDECore.stop() of bundle org.eclipse.pde.core.
@@ -8928,6 +8933,7 @@ Caused by: java.lang.IllegalStateException: The Plug-in Development Environment 
 	at org.eclipse.pde.internal.build.BundleHelper.getPlatformAdmin(BundleHelper.java:84)
 	at org.eclipse.pde.internal.core.MinimalState.<clinit>(MinimalState.java:86)
 	... 25 more
+<<<<<<< HEAD
 >>>>>>> main
 !SESSION 2025-01-10 21:54:42.826 -----------------------------------------------
 eclipse.buildId=4.33.0.202410162246
@@ -9284,3 +9290,5 @@ Binding(ALT+SHIFT+D R,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
+=======
+>>>>>>> fe3862805da69464cba2b8d4a9a6450291f00766
