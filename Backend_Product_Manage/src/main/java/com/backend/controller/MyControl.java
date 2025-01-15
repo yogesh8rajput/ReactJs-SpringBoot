@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,10 +42,10 @@ public class MyControl {
 	}
 	
 	@PostMapping("/add")
-	public Products add(@RequestPart Products products,@RequestPart MultipartFile imageFile) throws IOException {
+	public Products add(@RequestPart("product") Products products,@RequestPart("imageFile") MultipartFile imageFile) throws IOException {
 		
-		return p_Services.add(products);
-	}
+			return p_Services.add(products,imageFile);
+		}
 	
 	@GetMapping
 	public List<Products> getAll() {

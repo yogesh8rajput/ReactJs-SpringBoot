@@ -37,6 +37,9 @@ const Home = () => {
         {products.map((product,index) => (
     <Link to={`products/${product.product_id}`} >
           <div className="card bg-slate-100 rounded p-6 m-5 place-items-center" key={index}>
+            <div className="">
+              <img src={product.image_data} alt="Not Found" />
+            </div>
             <h1 className="font-bold text-3xl">{product.product_brand}</h1>
             <p className="p-2 text-purple-500 text-xl">
               {product.product_name}
