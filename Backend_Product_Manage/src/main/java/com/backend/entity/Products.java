@@ -26,7 +26,7 @@ public class Products {
 	private Integer product_quantity;
 	private Boolean product_status;
 	
-//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-YYYY")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-YYYY")
 	private Date release_date;
 	
 	
