@@ -6,4 +6,6 @@ import com.backend.entity.Products;
 
 public interface ProductRepository extends CrudRepository<Products, Integer> {
 
+	
+
 }
