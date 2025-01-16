@@ -10,7 +10,7 @@
     <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1737006848372"/>
     <persistedState key="show_in_time" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;show_in_time/>"/>
     <tags>topLevel</tags>
-    <tags>shellMinimized</tags>
+    <tags>shellMaximized</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_Se_xAdPOEe-Ei6Dafra_kg" selectedElement="_Se_xAtPOEe-Ei6Dafra_kg" horizontal="true">
       <children xsi:type="advanced:PerspectiveStack" xmi:id="_Se_xAtPOEe-Ei6Dafra_kg" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_S2VS8NPOEe-Ei6Dafra_kg">
         <children xsi:type="advanced:Perspective" xmi:id="_S2VS8NPOEe-Ei6Dafra_kg" elementId="org.eclipse.jdt.ui.JavaPerspective" selectedElement="_S2VS8dPOEe-Ei6Dafra_kg" label="Java" iconURI="platform:/plugin/org.eclipse.jdt.ui/$nl$/icons/full/eview16/jperspective.png">
@@ -79,11 +79,12 @@
           <tags>persp.editorOnboardingCommand:Show Key Assist$$$Ctrl+Shift+L</tags>
           <tags>persp.editorOnboardingCommand:New$$$Ctrl+N</tags>
           <tags>persp.editorOnboardingCommand:Open Type$$$Ctrl+Shift+T</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_S2VS8dPOEe-Ei6Dafra_kg" selectedElement="_S2VS_dPOEe-Ei6Dafra_kg" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_S2VS8dPOEe-Ei6Dafra_kg" selectedElement="_S2VS8tPOEe-Ei6Dafra_kg" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_S2VS8tPOEe-Ei6Dafra_kg" containerData="2500" selectedElement="_S2VS89POEe-Ei6Dafra_kg">
               <children xsi:type="basic:PartSashContainer" xmi:id="_S2VS89POEe-Ei6Dafra_kg" containerData="6000" selectedElement="_S2VS9NPOEe-Ei6Dafra_kg">
                 <children xsi:type="basic:PartStack" xmi:id="_S2VS9NPOEe-Ei6Dafra_kg" elementId="left" containerData="6600" selectedElement="_S2VS9dPOEe-Ei6Dafra_kg">
                   <tags>org.eclipse.e4.primaryNavigationStack</tags>
+                  <tags>active</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_S2VS9dPOEe-Ei6Dafra_kg" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_S2BJ4NPOEe-Ei6Dafra_kg" closeable="true">
                     <tags>View</tags>
                     <tags>categoryTag:Java</tags>
@@ -116,7 +117,7 @@
               </children>
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_S2VS_dPOEe-Ei6Dafra_kg" containerData="7500" selectedElement="_S2VTBtPOEe-Ei6Dafra_kg">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_S2VS_tPOEe-Ei6Dafra_kg" containerData="5154" horizontal="true">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_S2VS_tPOEe-Ei6Dafra_kg" containerData="8048" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_S2VS_9POEe-Ei6Dafra_kg" elementId="org.eclipse.ui.editorss" containerData="9000" ref="_S1zHcNPOEe-Ei6Dafra_kg"/>
                 <children xsi:type="basic:PartStack" xmi:id="_S2VTANPOEe-Ei6Dafra_kg" elementId="right" toBeRendered="false" containerData="1000">
                   <tags>org.eclipse.e4.secondaryNavigationStack</tags>
@@ -142,10 +143,8 @@
                   </children>
                 </children>
               </children>
-              <children xsi:type="basic:PartStack" xmi:id="_S2VTBtPOEe-Ei6Dafra_kg" elementId="bottom" containerData="4846" selectedElement="_S2VTC9POEe-Ei6Dafra_kg">
+              <children xsi:type="basic:PartStack" xmi:id="_S2VTBtPOEe-Ei6Dafra_kg" elementId="bottom" containerData="1952" selectedElement="_S2VTC9POEe-Ei6Dafra_kg">
                 <tags>org.eclipse.e4.secondaryDataStack</tags>
-                <tags>active</tags>
-                <tags>noFocus</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_S2VTB9POEe-Ei6Dafra_kg" elementId="org.eclipse.ui.views.ProblemView" ref="_S2ENMNPOEe-Ei6Dafra_kg" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:General</tags>
@@ -265,6 +264,8 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view group_libraries=&quot;1&quot; layout=&quot;2&quot; linkWithEditor=&quot;0&quot; rootMode=&quot;1&quot; workingSetName=&quot;&quot;>&#xD;&#xA;&lt;customFilters userDefinedPatternsEnabled=&quot;false&quot;>&#xD;&#xA;&lt;xmlDefinedFilters>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.StaticsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.buildship.ui.packageexplorer.filter.gradle.buildfolder&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonSharedProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;bndtools.jareditor.tempfiles.packageexplorer.filter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyInnerPackageFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.m2e.MavenModuleFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.buildship.ui.packageexplorer.filter.gradle.subProject&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ClosedProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.EmptyLibraryContainerFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.PackageDeclarationFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.pde.ui.BinaryProjectFilter1&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.pde.ui.ExternalPluginLibrariesFilter1&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.FieldsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ContainedLibraryFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.HideInnerClassFilesFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.DeprecatedMembersFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ImportDeclarationFilter&quot; isEnabled=&quot;true&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaElementFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LibraryFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.CuAndClassFileFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyPackageFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter&quot; isEnabled=&quot;false&quot;/>&#xD;&#xA;&lt;/xmlDefinedFilters>&#xD;&#xA;&lt;/customFilters>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:Java</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_S_M7ENPOEe-Ei6Dafra_kg" elementId="org.eclipse.jdt.ui.PackageExplorer">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -319,8 +320,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <tags>active</tags>
-      <tags>activeOnClose</tags>
       <menus xmi:id="_gmkIoNPOEe-Ei6Dafra_kg" elementId="org.eclipse.ui.console.ConsoleView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -412,7 +411,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_ShcBANPOEe-Ei6Dafra_kg" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_2YPYUNPmEe-94eNu3PwPYw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_RyvITtPOEe-Ei6Dafra_kg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_BWcpINQlEe-5OfjNqTPkkw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_RyvITtPOEe-Ei6Dafra_kg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_ShcoENPOEe-Ei6Dafra_kg" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -420,8 +419,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_ShcoEtPOEe-Ei6Dafra_kg" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_2YQmcNPmEe-94eNu3PwPYw" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_RygeitPOEe-Ei6Dafra_kg"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_2YR0kNPmEe-94eNu3PwPYw" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_Ryi6x9POEe-Ei6Dafra_kg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_BWdQMNQlEe-5OfjNqTPkkw" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_RygeitPOEe-Ei6Dafra_kg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_BWd3QNQlEe-5OfjNqTPkkw" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_Ryi6x9POEe-Ei6Dafra_kg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_ShcoE9POEe-Ei6Dafra_kg" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -445,7 +444,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_ShedQNPOEe-Ei6Dafra_kg" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_2YTpwNPmEe-94eNu3PwPYw" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_RyuhK9POEe-Ei6Dafra_kg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_BWfFYNQlEe-5OfjNqTPkkw" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_RyuhK9POEe-Ei6Dafra_kg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_ShedQdPOEe-Ei6Dafra_kg" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -3260,7 +3259,7 @@
   <addons xmi:id="_RwN_dNPOEe-Ei6Dafra_kg" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
   <addons xmi:id="_RwN_ddPOEe-Ei6Dafra_kg" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_RwrScNPOEe-Ei6Dafra_kg" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
-  <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
+  <addons xmi:id="_BB_cENQlEe-5OfjNqTPkkw" elementId="org.eclipse.ui.ide.addon.0" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
   <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
   <categories xmi:id="_Rx9r4NPOEe-Ei6Dafra_kg" elementId="org.springframework.tooling.ls.eclipse.gotosymbol.commands.category" name="STS4"/>
   <categories xmi:id="_Rx9r4dPOEe-Ei6Dafra_kg" elementId="org.eclipse.ui.category.edit" name="Edit"/>
