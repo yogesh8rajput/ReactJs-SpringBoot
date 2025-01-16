@@ -13,6 +13,7 @@ const Product = () => {
           const response = await axios.get(`http://localhost:8090/products/${product_id}`);
           setproducts(response.data);
         //   console.log(response.data);
+      
         } catch (error) {
           console.log("error" + error);
           setiserror(true);
@@ -26,8 +27,9 @@ const Product = () => {
       fetchproduct();
     }, [product_id]);
     const handleUpdateChange = () => {
-      navigate(`/product/update/${product_id}`);
+      navigate(`/products/update/${product_id}`);
     };
+  
   
     if (iserror) {
       return (
@@ -43,16 +45,17 @@ const Product = () => {
     
     return (
       <>
-    <div className=" flex h-screen bg-slate-900 text-white">
+    <div className=" flex h-fit bg-slate-900 text-white">
 
-        <div className="px-20 py-6 ">
+        <div className="px-20 py-6 flex-1">
 
-        <img src={`data:image/jpg;base64,${products.image_data}`} alt="Not Found" className="h-full" />
+        <img src={`data:image/jpeg;base64,${products.image_data}`} alt="Not Found" className="h-full" />
         </div>
         <div className=" flex flex-col gap-4 flex-1 py-10 ">
         
 
 
+             
             <h1 className="font-bold text-7xl">{products.product_brand}</h1>
               <p className="p-2 text-purple-500 text-3xl">
                 {products.product_name}

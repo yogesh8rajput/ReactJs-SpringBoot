@@ -1,78 +1,236 @@
 import axios from "axios";
-import React, { useState,useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
 
 const UpdateProduct = () => {
-    const {product_id} = useParams();
-    const [products, setproducts] = useState([]);
-    const [iserror, setiserror] = useState(false);
+  const [product, setProduct] = useState({
+    // product_id: "",
+    product_name: "",
+    product_desc: "",
+    product_brand: "",
+    product_price: "",
+    product_Category: "",
+    product_quantity: "",
+    release_date: "",
+    product_status: false,
+  });
+  // -----------x----------Image-------------x---------
+
+  const [image, setImage] = useState(null);
+  const handleImageChange=(e)=>{
+    setImage(e.target.files[0]);
+  }
+
+  // -----------x----------------x-------------------------x---------
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setProduct({ ...product, [e.target.name]: value });
+  };
+
+  const ProductRegister = async (e) => {
+    e.preventDefault();
+    
+
+// --------------------------------x---Submit---x----------------------
+const formData = new FormData();
+formData.append("imageFile",image);
+formData.append("product",new Blob([JSON.stringify(product)],{type:"application/json"}));
+
+axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type" : "multipart/form-data",},})
+.then((response)=>{
+  console.log("Product added successfull!",response.data);
+  alert("Product added successfull!")
+})
+.catch((error)=>{
+  console.error("Error adding Products" , error);
+  alert("Error adding Products.");
+})
+
+// --------------------------------x----------/--------x----------------------
+  };
+
+  const fetchproduct= async () => {
+    try {
+      const response = await axios.get(`http://localhost:8090/products/${product_id}`);
+      setproducts(response.data);
+    //   console.log(response.data);
   
-    useEffect(() => {
-      const fetchproduct= async () => {
-        try {
-          const response = await axios.get(`http://localhost:8090/products/${product_id}`);
-          setproducts(response.data);
-        //   console.log(response.data);
-        } catch (error) {
-          console.log("error" + error);
-          setiserror(true);
-        }
-      };
-  
-      fetchproduct();
-    }, [product_id]);
-  
-    if (iserror) {
-      return (
-        <>
-          <div className="error grid place-items-center h-96">
-            <p className="text-red-600 text-5xl">Something went wrong......</p>
-            <p className="text-pink-950 text-2xl underline">-----Start the Server Please----</p>
-          </div>
-        </>
-      );
+    } catch (error) {
+      console.log("error" + error);
+      setiserror(true);
     }
 
-    
-    return (
-      <>
-    <div className=" flex h-screen bg-slate-900 text-white">
 
-        <div className="px-20 py-6 ">
+  // =======================================================
+  return (
+    <>
+      <div className="bg-slate-500 p-5">
+        <div className="bg-gray-200 p-5 w-fit place-self-center rounded-3xl">
+          <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
+            UPDATE PRODUCT
+          </h1>
+          <form onSubmit={ProductRegister} className="flex flex-col gap-3">
+            <table className="w-auto border-collapse">
+              <tbody>
+                <tr className="border-b-2 border-b-gray-300 ">
+                  <td className="p-4">
+                    {" "}
+                    <label>Name:</label>
+                  </td>
+                  <td className="p-4">
+                    {" "}
+                    <input
+                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none px-4 py-1"
+                      type="text"
+                      name="product_name"
+                      value={product.product_name}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-b-gray-300">
+                  <td className="p-4">
+                    {" "}
+                    <label>Description:</label>
+                  </td>
+                  <td className="p-4">
+                    {" "}
+                    <textarea
+                      name="product_desc"
+                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
+                      value={product.product_desc}
+                      onChange={handleInputChange}
+                    ></textarea>
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-b-gray-300">
+                  <td className="p-4">
+                    {" "}
+                    <label>Brand:</label>
+                  </td>
+                  <td className="p-4">
+                    {" "}
+                    <input
+                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
+                      type="text"
+                      name="product_brand"
+                      value={product.product_brand}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-b-gray-300">
+                  <td className="p-4">
+                    <label>Price:</label>
+                  </td>
+                  <td className="p-4">
+                    {" "}
+                    <input
+                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
+                      type="number"
+                      name="product_price"
+                      min="0"
+                      value={product.product_price}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-b-gray-300">
+                  <td className="p-4">
+                    <label>Category:</label>
+                  </td>
 
-        <img src={`data:image/jpg;base64,${products.image_data}`} alt="Not Found" className="h-full" />
+                  <td className="p-4">
+                    <select
+                      name="product_Category"
+                      value={product.product_Category}
+                      onChange={handleInputChange}
+                      className="border-teal-700 border-2 bg-transparent w-full outline-none p-2"
+                    >
+                      <option value="">Select Category</option>
+                      <option value="Electronics">Electronics</option>
+                      <option value="Stationory">Stationory</option>
+                      <option value="Home Appliances">Home Appliances</option>
+                      <option value="Toys">Toys</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-b-gray-300">
+                  <td className="p-4">
+                    <label>Quantity:</label>
+                  </td>
+                  <td className="p-4">
+                    {" "}
+                    <input
+                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
+                      type="number"
+                      name="product_quantity"
+                      id="product_quantity"
+                      value={product.product_quantity}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                </tr>
+
+                <tr className="border-b-2 border-b-gray-300">
+                  <td className="p-4">
+                    <label>Release Date:</label>
+                  </td>
+                  <td className="p-4">
+                    {" "}
+                    <input
+                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
+                      type="date"
+                      name="release_date"
+                      id="release_date"
+                      value={product.release_date}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-b-gray-300">
+                  <td className="p-4">
+                    <label>Image</label>
+                  </td>
+                  <td className="p-4">
+                    {" "}
+                    <input
+                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
+                      type="file"
+                      onChange={handleImageChange}
+                    />
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-b-gray-300">
+                  <td className="p-4">
+                    <input
+                      type="checkbox"
+                      className="w-8 h-8"
+                      name="product_status"
+                      onChange={(e) => setProduct({...product
+                        ,product_status:e.target.checked
+                      })}
+                    />
+                    <label> Available</label>
+                  </td>
+
+                  <td className="text-center">
+                    <button className="px-4 py-1 bg-teal-700 text-white font-bold text-2xl" type="submit">
+                      ADD
+                    </button>
+                    {/* <input
+                      type="submit"
+                      value="Add"
+                      className="px-4 py-1 bg-teal-700 text-white font-bold text-2xl  "
+                    /> */}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
         </div>
-        <div className=" flex flex-col gap-4 flex-1 py-10 ">
-        
-
-
-            <h1 className="font-bold text-7xl">{products.product_brand}</h1>
-              <p className="p-2 text-purple-500 text-3xl">
-                {products.product_name}
-              </p>
-              <p  className={`w-fit p-4 ${products.release_date ==null ? "hidden" :"inline-block"}`}>
-              {products.release_date}
-              </p>
-              <p className="p-2 font-bold font-mono text-2xl text-green-400">
-                ₹{products.product_price}
-              </p>
-
-  <p className={`w-fit p-4 ${products.product_status ==1 ? "bg-green-700" :"bg-red-500"}`}>{products.product_status ==1 ? "Available" :"Out of Stock"}</p>
-              <p className="text-xl italic border-2 border-teal-700 p-6 w-fit ">Description: {products.product_desc}</p>
-              <Link
-                to="/"
-                className={`bg-blue-500 w-36 text-white p-2 rounded font-bold text-center ${products.product_status ==1 ? "inline-block" : "hidden"}`}
-              >
-               {products.product_status ==1 ? "Add To Cart" : "Out of Stock"}
-              </Link>
-             
-        </div>
-    </div>
-
-      </>
-    );
-
-
-}
+      </div>
+    </>
+  );
+};
 
 export default UpdateProduct;
