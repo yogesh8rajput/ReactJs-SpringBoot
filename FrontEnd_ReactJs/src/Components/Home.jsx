@@ -38,7 +38,7 @@ const Home = () => {
     <Link to={`products/${product.product_id}`} >
           <div className="card bg-slate-100 rounded p-6 m-5 place-items-center" key={index}>
             <div className="">
-              <img src={product.image_data} alt="Not Found" />
+              <img src={`data:image/jpg;base64,${product.image_data}`} alt="Not Found" className="h-96"/>
             </div>
             <h1 className="font-bold text-3xl">{product.product_brand}</h1>
             <p className="p-2 text-purple-500 text-xl">
@@ -63,7 +63,7 @@ const Home = () => {
               to="/oneproduct"
               className="bg-blue-500 text-white p-2 rounded font-bold"
             >
-              Add to Cart
+             {product.product_status == 1 ?"Add to Cart":"Out of Stock"} 
             </Link>
     </td>
   </tr></tbody>

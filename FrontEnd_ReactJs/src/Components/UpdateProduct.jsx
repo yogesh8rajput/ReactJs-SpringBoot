@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState,useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const Product = () => {
+const UpdateProduct = () => {
     const {product_id} = useParams();
     const [products, setproducts] = useState([]);
     const [iserror, setiserror] = useState(false);
-  const navigate = useNavigate();
+  
     useEffect(() => {
       const fetchproduct= async () => {
         try {
@@ -17,17 +17,10 @@ const Product = () => {
           console.log("error" + error);
           setiserror(true);
         }
-
-        
-        
-        
       };
-      
+  
       fetchproduct();
     }, [product_id]);
-    const handleUpdateChange = () => {
-      navigate(`/product/update/${product_id}`);
-    };
   
     if (iserror) {
       return (
@@ -73,10 +66,7 @@ const Product = () => {
                {products.product_status ==1 ? "Add To Cart" : "Out of Stock"}
               </Link>
              
-       <button className="bg-violet-500 w-36 text-white p-2 rounded font-bold text-center" onClick={handleUpdateChange}>Update</button>
-       <button className="bg-violet-500 w-36 text-white p-2 rounded font-bold text-center">Delete</button>
         </div>
-
     </div>
 
       </>
@@ -85,4 +75,4 @@ const Product = () => {
 
 }
 
-export default Product;
+export default UpdateProduct;
