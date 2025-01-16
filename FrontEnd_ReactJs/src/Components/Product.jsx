@@ -20,11 +20,22 @@ const Product = () => {
 
         
         
-        
       };
       
       fetchproduct();
     }, [product_id]);
+    //delete code 
+    const deleteProduct=async ()=>{
+      try {
+        await axios.delete(`http://localhost:8090/products/${product_id}`);
+        console.log("Product deleted successfully");
+        alert("Product deleted successfully");
+        // refreshData();
+        navigate("/");
+      } catch (error) {
+        
+      }
+    }
     const handleUpdateChange = () => {
       navigate(`/product/update/${product_id}`);
     };
@@ -74,7 +85,7 @@ const Product = () => {
               </Link>
              
        <button className="bg-violet-500 w-36 text-white p-2 rounded font-bold text-center" onClick={handleUpdateChange}>Update</button>
-       <button className="bg-violet-500 w-36 text-white p-2 rounded font-bold text-center">Delete</button>
+       <button className="bg-violet-500 w-36 text-white p-2 rounded font-bold text-center" onClick={deleteProduct} >Delete</button>
         </div>
 
     </div>
