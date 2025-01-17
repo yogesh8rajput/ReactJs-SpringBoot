@@ -46,7 +46,7 @@ const Home = () => {
                 <img
                   src={`data:image/jpg;base64,${product.image_data}`}
                   alt="Not Found"
-                  className="h-96"
+                  className="h-64 w-44 object-cover"
                 />
               </div>
               <h1 className="font-bold text-3xl">{product.product_brand}</h1>

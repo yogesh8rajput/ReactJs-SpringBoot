@@ -37,7 +37,7 @@ const Product = () => {
         
       }
     }
-    const handleUpdateChange = () => {
+    const handleUpdateChange = (product_id) => {
       navigate(`/products/update/${product_id}`);
     };
   
@@ -87,7 +87,7 @@ const Product = () => {
                {products.product_status ==1 ? "Add To Cart" : "Out of Stock"}
               </Link>
              
-       <button className="bg-violet-500 w-36 text-white p-2 rounded font-bold text-center" onClick={handleUpdateChange}>Update</button>
+       <button className="bg-violet-500 w-36 text-white p-2 rounded font-bold text-center" onClick={()=>handleUpdateChange(product_id)}>Update</button>
        <button className="bg-violet-500 w-36 text-white p-2 rounded font-bold text-center" onClick={deleteProduct} >Delete</button>
         </div>
 

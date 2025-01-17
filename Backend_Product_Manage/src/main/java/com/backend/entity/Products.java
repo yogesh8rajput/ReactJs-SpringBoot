@@ -26,17 +26,13 @@ public class Products {
 	private Integer product_quantity;
 	private Boolean product_status;
 	
-<<<<<<< HEAD
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="YYYY-MM-dd")
-=======
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-dd")
->>>>>>> d71a64a4a351d82cb28f9a92d4813edbf898842d
 	private Date release_date;
 	
 	
 	private String image_name;
 	private String image_type;
-	
+
 	@Lob 
 	private byte[] image_data;
 	

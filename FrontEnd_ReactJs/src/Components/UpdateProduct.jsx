@@ -1,9 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
-  const [product, setProduct] = useState({
-    // product_id: "",
+  const {product_id} = useParams();
+  const [product,setProduct] = useState(null);
+    const [iserror, setiserror] = useState(false);
+    const navigate = useNavigate();
+  
+  const [updatedproduct, setUpdatedProduct] = useState({
+    product_id: "",
     product_name: "",
     product_desc: "",
     product_brand: "",
@@ -21,44 +27,55 @@ const UpdateProduct = () => {
   }
 
   // -----------x----------------x-------------------------x---------
-  const handleInputChange = (e) => {
+  const handleUpdateChange = (e) => {
     const value = e.target.value;
-    setProduct({ ...product, [e.target.name]: value });
+    setUpdatedProduct({ ...updatedproduct, [e.target.name]: value });
   };
 
-  const ProductRegister = async (e) => {
+  const ProductUpdate = async (e) => {
     e.preventDefault();
     
 
 // --------------------------------x---Submit---x----------------------
 const formData = new FormData();
 formData.append("imageFile",image);
-formData.append("product",new Blob([JSON.stringify(product)],{type:"application/json"}));
+formData.append("product",new Blob([JSON.stringify(updatedproduct)],{type:"application/json"}));
 
-axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type" : "multipart/form-data",},})
+axios.put(`http://localhost:8090/products/update/${product_id}`,formData,{headers:{"Content-Type" : "multipart/form-data",},})
 .then((response)=>{
-  console.log("Product added successfull!",response.data);
-  alert("Product added successfull!")
+  console.log("Product updated successfull!",response.data);
+  alert("Product updated successfull!")
+  setmsg("Product updated Successfully");
+  navigate("/");
+
 })
 .catch((error)=>{
-  console.error("Error adding Products" , error);
-  alert("Error adding Products.");
+  console.error("Error updating Products" , error);
+  alert("Error updating Products.",error);
 })
 
 // --------------------------------x----------/--------x----------------------
   };
 
+  useEffect(() => {
+fetchproduct();
+  },[])
+
   const fetchproduct= async () => {
     try {
       const response = await axios.get(`http://localhost:8090/products/${product_id}`);
-      setproducts(response.data);
+      setProduct(response.data);
+      setUpdatedProduct(response.data)
     //   console.log(response.data);
   
     } catch (error) {
       console.log("error" + error);
       setiserror(true);
     }
-
+  }
+  // if (!product) {
+  //   return <div>Loading...</div>;  // Loading state in case the product data is not yet fetched
+  // }
 
   // =======================================================
   return (
@@ -68,12 +85,11 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             UPDATE PRODUCT
           </h1>
-          <form onSubmit={ProductRegister} className="flex flex-col gap-3">
+          <form onSubmit={ProductUpdate} className="flex flex-col gap-3">
             <table className="w-auto border-collapse">
               <tbody>
                 <tr className="border-b-2 border-b-gray-300 ">
                   <td className="p-4">
-                    {" "}
                     <label>Name:</label>
                   </td>
                   <td className="p-4">
@@ -82,8 +98,8 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
                       className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none px-4 py-1"
                       type="text"
                       name="product_name"
-                      value={product.product_name}
-                      onChange={handleInputChange}
+                      value={updatedproduct.product_name}
+                      onChange={handleUpdateChange}
                     />
                   </td>
                 </tr>
@@ -97,8 +113,8 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
                     <textarea
                       name="product_desc"
                       className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
-                      value={product.product_desc}
-                      onChange={handleInputChange}
+                      value={updatedproduct.product_desc}
+                      onChange={handleUpdateChange}
                     ></textarea>
                   </td>
                 </tr>
@@ -113,8 +129,8 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
                       className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
                       type="text"
                       name="product_brand"
-                      value={product.product_brand}
-                      onChange={handleInputChange}
+                      value={updatedproduct.product_brand}
+                      onChange={handleUpdateChange}
                     />
                   </td>
                 </tr>
@@ -129,8 +145,8 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
                       type="number"
                       name="product_price"
                       min="0"
-                      value={product.product_price}
-                      onChange={handleInputChange}
+                      value={updatedproduct.product_price}
+                      onChange={handleUpdateChange}
                     />
                   </td>
                 </tr>
@@ -142,8 +158,8 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
                   <td className="p-4">
                     <select
                       name="product_Category"
-                      value={product.product_Category}
-                      onChange={handleInputChange}
+                      value={updatedproduct.product_Category}
+                      onChange={handleUpdateChange}
                       className="border-teal-700 border-2 bg-transparent w-full outline-none p-2"
                     >
                       <option value="">Select Category</option>
@@ -165,8 +181,8 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
                       type="number"
                       name="product_quantity"
                       id="product_quantity"
-                      value={product.product_quantity}
-                      onChange={handleInputChange}
+                      value={updatedproduct.product_quantity}
+                      onChange={handleUpdateChange}
                     />
                   </td>
                 </tr>
@@ -182,8 +198,8 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
                       type="date"
                       name="release_date"
                       id="release_date"
-                      value={product.release_date}
-                      onChange={handleInputChange}
+                      value={updatedproduct.release_date}
+                      onChange={handleUpdateChange}
                     />
                   </td>
                 </tr>
@@ -215,7 +231,7 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
 
                   <td className="text-center">
                     <button className="px-4 py-1 bg-teal-700 text-white font-bold text-2xl" type="submit">
-                      ADD
+                      UPDATE
                     </button>
                     {/* <input
                       type="submit"

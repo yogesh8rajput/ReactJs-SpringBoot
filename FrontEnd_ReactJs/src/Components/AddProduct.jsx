@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const AddProduct = () => {
   // const [iserror, setiserror] = useState(false);
+  const [msg,setmsg] = useState();
   const [product, setProduct] = useState({
     // product_id: "",
     product_name: "",
@@ -57,7 +58,18 @@ formData.append("product",new Blob([JSON.stringify(product)],{type:"application/
 axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type" : "multipart/form-data",},})
 .then((response)=>{
   console.log("Product added successfull!",response.data);
-  alert("Product added successfull!")
+  // alert("Product added successfull!")
+  setmsg("Product added Successfully");
+  setProduct({
+    product_name: "",
+    product_desc: "",
+    product_brand: "",
+    product_price: "",
+    product_Category: "",
+    product_quantity: "",
+    release_date: "",
+    product_status: false,
+  })
 })
 .catch((error)=>{
   console.error("Error adding Products" , error);
@@ -74,7 +86,9 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
         <div className="bg-gray-200 p-5 w-fit place-self-center rounded-3xl">
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             ADD PRODUCT
+
           </h1>
+          {msg&&<p>{msg}</p>}
           <form onSubmit={ProductRegister} className="flex flex-col gap-3">
             <table className="w-auto border-collapse">
               <tbody>
