@@ -19,5 +19,5 @@ public interface P_Services {
 	
 	public void delete(Integer product_id);
 	
-	public Products update(Products products);
+	public Products update(Products products,Integer product_id,MultipartFile imageFile) throws IOException ;
 }

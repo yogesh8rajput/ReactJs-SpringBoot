@@ -61,8 +61,8 @@ public class MyControl {
 		 p_Services.delete(product_id);
 	}
 	
-	@PutMapping
-	public Products update(@RequestBody Products products) {
-		return p_Services.update(products);
+	@PutMapping("/update/{product_id}")
+	public Products update(@RequestPart("product") Products products, @PathVariable Integer product_id,@RequestPart("imageFile") MultipartFile imageFile) throws IOException{
+		return p_Services.update(products,product_id,imageFile);
 	}
 }

@@ -32,7 +32,7 @@ public class Products {
 	
 	private String image_name;
 	private String image_type;
-	
+
 	@Lob 
 	private byte[] image_data;
 	

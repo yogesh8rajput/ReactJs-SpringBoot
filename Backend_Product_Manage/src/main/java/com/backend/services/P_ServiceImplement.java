@@ -1,6 +1,7 @@
 package com.backend.services;
 
 import java.io.IOException;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,8 +47,41 @@ public class P_ServiceImplement implements P_Services{
 	}
 
 	@Override
-	public Products update(Products products) {
-		return productRepository.save(products);
+	public Products update(Products products,Integer product_id,MultipartFile imageFile) {
+		 Optional<Products> op = productRepository.findById(product_id);
+		    if (op.isPresent()) {
+		        Products pro = op.get();
+		        
+		        // Check each field for non-null and update accordingly
+		        if (products.getProduct_name() != null) {
+		            pro.setProduct_name(products.getProduct_name());
+		        }
+		        if (products.getProduct_desc() != null) {
+		            pro.setProduct_desc(products.getProduct_desc());
+		        }
+		        if (products.getProduct_brand() != null) {
+		            pro.setProduct_brand(products.getProduct_brand());
+		        }
+		        if (products.getProduct_price() != null) {
+		            pro.setProduct_price(products.getProduct_price());
+		        }
+		        if (products.getProduct_Category() != null) {
+		            pro.setProduct_Category(products.getProduct_Category());
+		        }
+		        if (products.getProduct_quantity() != null) {
+		            pro.setProduct_quantity(products.getProduct_quantity());
+		        }
+		        if (products.getProduct_status() != null) {
+		            pro.setProduct_status(products.getProduct_status());
+		        }
+		        if (products.getImage_data() != null) {
+		            pro.setImage_data(products.getImage_data());
+		        }
+		        
+		        return productRepository.save(pro);
+		    } else {
+		        throw new RuntimeException("Product not found with id: " + product_id);
+		    }
 		
 	}
 
