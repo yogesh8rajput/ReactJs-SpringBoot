@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
-  const {product_id} = useParams();
-  const [product,setProduct] = useState(null);
-    const [iserror, setiserror] = useState(false);
-    const navigate = useNavigate();
+  const { product_id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [iserror, setiserror] = useState(false);
+    const [msg,setmsg] = useState();
   
+  const navigate = useNavigate();
+
   const [updatedproduct, setUpdatedProduct] = useState({
     product_id: "",
     product_name: "",
@@ -22,10 +24,17 @@ const UpdateProduct = () => {
   // -----------x----------Image-------------x---------
 
   const [image, setImage] = useState(null);
-  const handleImageChange=(e)=>{
-    setImage(e.target.files[0]);
-  }
-
+  // const handleImageChange = (e) => {
+  //   setImage(e.target.files[0]);
+  // };
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    if (selectedImage && selectedImage.size < 5000000) { // 5MB limit, for example
+      setImage(selectedImage);
+    } else {
+      alert("Please select a valid image (max 5MB).");
+    }
+  };
   // -----------x----------------x-------------------------x---------
   const handleUpdateChange = (e) => {
     const value = e.target.value;
@@ -34,45 +43,50 @@ const UpdateProduct = () => {
 
   const ProductUpdate = async (e) => {
     e.preventDefault();
-    
 
-// --------------------------------x---Submit---x----------------------
-const formData = new FormData();
-formData.append("imageFile",image);
-formData.append("product",new Blob([JSON.stringify(updatedproduct)],{type:"application/json"}));
+    // --------------------------------x---Submit---x----------------------
+    const formData = new FormData();
+    formData.append("imageFile", image);
+    formData.append(
+      "product",JSON.stringify(updatedproduct)
+    );
 
-axios.put(`http://localhost:8090/products/update/${product_id}`,formData,{headers:{"Content-Type" : "multipart/form-data",},})
-.then((response)=>{
-  console.log("Product updated successfull!",response.data);
-  alert("Product updated successfull!")
-  setmsg("Product updated Successfully");
-  navigate("/");
+    axios
+      .put(`http://localhost:8090/products/update/${product_id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => {
+        console.log("Product updated successfull!", response.data);
+        alert("Product updated successfull!");
+        setmsg("Product updated Successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error updating Products", error);
+        alert("Error updating Products.", error);
+      });
 
-})
-.catch((error)=>{
-  console.error("Error updating Products" , error);
-  alert("Error updating Products.",error);
-})
-
-// --------------------------------x----------/--------x----------------------
+    // --------------------------------x----------/--------x----------------------
   };
 
   useEffect(() => {
-fetchproduct();
-  },[])
+    fetchproduct();
+  }, []);
 
-  const fetchproduct= async () => {
+  const fetchproduct = async () => {
     try {
-      const response = await axios.get(`http://localhost:8090/products/${product_id}`);
+      const response = await axios.get(
+        `http://localhost:8090/products/${product_id}`
+      );
       setProduct(response.data);
-      setUpdatedProduct(response.data)
-    //   console.log(response.data);
-  
+      setUpdatedProduct(response.data);
     } catch (error) {
+      
       console.log("error" + error);
+        console.log(response.data);
       setiserror(true);
     }
-  }
+  };
   // if (!product) {
   //   return <div>Loading...</div>;  // Loading state in case the product data is not yet fetched
   // }
@@ -85,6 +99,8 @@ fetchproduct();
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             UPDATE PRODUCT
           </h1>
+          {msg&&<p className="text-green-700 text-center">{msg}</p>}
+
           <form onSubmit={ProductUpdate} className="flex flex-col gap-3">
             <table className="w-auto border-collapse">
               <tbody>
@@ -212,7 +228,7 @@ fetchproduct();
                     <input
                       className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
                       type="file"
-                      onChange={handleImageChange}
+                      // onChange={handleImageChange}
                     />
                   </td>
                 </tr>
@@ -222,15 +238,21 @@ fetchproduct();
                       type="checkbox"
                       className="w-8 h-8"
                       name="product_status"
-                      onChange={(e) => setProduct({...product
-                        ,product_status:e.target.checked
-                      })}
+                      // onChange={(e) =>
+                      //   setProduct({
+                      //     ...product,
+                      //     product_status: e.target.checked,
+                      //   })
+                      // }
                     />
                     <label> Available</label>
                   </td>
 
                   <td className="text-center">
-                    <button className="px-4 py-1 bg-teal-700 text-white font-bold text-2xl" type="submit">
+                    <button
+                      className="px-4 py-1 bg-teal-700 text-white font-bold text-2xl"
+                      type="submit"
+                    >
                       UPDATE
                     </button>
                     {/* <input

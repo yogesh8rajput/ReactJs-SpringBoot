@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.backend.entity.Products;
@@ -20,4 +21,6 @@ public interface P_Services {
 	public void delete(Integer product_id);
 	
 	public Products update(Products products,Integer product_id,MultipartFile imageFile) throws IOException ;
+	
+	public byte[] getImageById(Integer product_id);
 }

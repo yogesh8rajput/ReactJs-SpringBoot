@@ -47,7 +47,7 @@ public class P_ServiceImplement implements P_Services{
 	}
 
 	@Override
-	public Products update(Products products,Integer product_id,MultipartFile imageFile) {
+	public Products update(Products products,Integer product_id,MultipartFile imageFile) throws IOException {
 		 Optional<Products> op = productRepository.findById(product_id);
 		    if (op.isPresent()) {
 		        Products pro = op.get();
@@ -74,8 +74,10 @@ public class P_ServiceImplement implements P_Services{
 		        if (products.getProduct_status() != null) {
 		            pro.setProduct_status(products.getProduct_status());
 		        }
-		        if (products.getImage_data() != null) {
-		            pro.setImage_data(products.getImage_data());
+		        if (imageFile != null && !imageFile.isEmpty()) {
+		        	pro.setImage_name(imageFile.getOriginalFilename());
+		            pro.setImage_data(imageFile.getBytes());
+		            pro.setImage_type(imageFile.getContentType());
 		        }
 		        
 		        return productRepository.save(pro);
@@ -83,6 +85,16 @@ public class P_ServiceImplement implements P_Services{
 		        throw new RuntimeException("Product not found with id: " + product_id);
 		    }
 		
+	}
+
+	@Override
+	public byte[] getImageById(Integer product_id) {
+
+		Optional<Products> op = productRepository.findById(product_id);
+		Products pro = op.get();
+		byte[] imageFile = pro.getImage_data();
+		
+		return imageFile;
 	}
 
 }

@@ -40,29 +40,51 @@ public class MyControl {
 	public MyControl(P_Services p_Services) {
 		this.p_Services = p_Services;
 	}
-	
+//	--------------------Adding Product--------------------
 	@PostMapping("/add")
 	public Products add(@RequestPart("product") Products products,@RequestPart("imageFile") MultipartFile imageFile) throws IOException {
 		
 			return p_Services.add(products,imageFile);
 		}
 	
+//	--------------------Show all Product--------------------
+
 	@GetMapping
 	public List<Products> getAll() {
 		return p_Services.getAll();
 	}
+	
+//	--------------------Get by id one Product--------------------
+
 	@GetMapping("/{product_id}")
 	public Products getOne(@PathVariable Integer product_id) {
 		return p_Services.getOne(product_id);
 	}
 	
+	
+//	--------------------Delete Product--------------------
+
 	@DeleteMapping("/{product_id}")
 	public void delete(@PathVariable Integer product_id) {
 		 p_Services.delete(product_id);
 	}
 	
+//	--------------------Update Product--------------------
+
 	@PutMapping("/update/{product_id}")
 	public Products update(@RequestPart("product") Products products, @PathVariable Integer product_id,@RequestPart("imageFile") MultipartFile imageFile) throws IOException{
 		return p_Services.update(products,product_id,imageFile);
 	}
+	
+	
+//	--------------------Getting image by Product Id--------------------
+	
+	@GetMapping("/{product_id}/image")
+	public byte[] getImageById(@PathVariable Integer product_id){
+		
+		return p_Services.getImageById(product_id);
+		
+		
+	}
+
 }

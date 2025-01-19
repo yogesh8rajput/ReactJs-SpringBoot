@@ -88,7 +88,7 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
             ADD PRODUCT
 
           </h1>
-          {msg&&<p>{msg}</p>}
+          {msg&&<p className="text-green-700 text-center">{msg}</p>}
           <form onSubmit={ProductRegister} className="flex flex-col gap-3">
             <table className="w-auto border-collapse">
               <tbody>
