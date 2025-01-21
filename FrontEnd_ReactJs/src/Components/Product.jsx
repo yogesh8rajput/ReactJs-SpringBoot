@@ -6,6 +6,7 @@ const Product = () => {
     const {product_id} = useParams();
     const [products, setproducts] = useState([]);
     const [iserror, setiserror] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
     useEffect(() => {
       const fetchproduct= async () => {
@@ -13,7 +14,9 @@ const Product = () => {
           const response = await axios.get(`http://localhost:8090/products/${product_id}`);
           setproducts(response.data);
         //   console.log(response.data);
-      
+        // if (response.data.image_name) {
+          fetchImage();
+        // }
         } catch (error) {
           console.log("error" + error);
           setiserror(true);
@@ -22,9 +25,26 @@ const Product = () => {
         
         
       };
+
+      const fetchImage = async () => {
+        const response = await axios.get(
+          `http://localhost:8090/products/${product_id}/image`,
+          { responseType: "blob" }
+        );
+        setImageUrl(URL.createObjectURL(response.data));
+      };
+
       
       fetchproduct();
     }, [product_id]);
+
+
+
+
+
+
+
+    
     //delete code 
     const deleteProduct=async ()=>{
       try {
@@ -60,7 +80,8 @@ const Product = () => {
 
         <div className="px-20 py-6 flex-1">
 
-        <img src={`data:image/jpeg;base64,${products.image_data}`} alt="Not Found" className="h-full" />
+        {/* <img src={`data:image/jpeg;base64,${products.image_data}`} alt="Not Found" className="h-full" /> */}
+        <img src={imageUrl} alt="Not Found" className="h-full" />
         </div>
         <div className=" flex flex-col gap-4 flex-1 py-10 ">
         
