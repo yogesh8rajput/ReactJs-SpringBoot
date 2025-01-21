@@ -4,16 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
   const { product_id } = useParams();
+  const navigate = useNavigate();
+
   const [product, setProduct] = useState(null);
-<<<<<<< HEAD
   const [isError, setIsError] = useState(false);
   const [msg, setMsg] = useState("");
-=======
-  const [iserror, setiserror] = useState(false);
-  const [msg, setmsg] = useState();
->>>>>>> 3413e5eeb310797dcbdcb0cede4912f6bad294b5
-
-  const navigate = useNavigate();
 
   const [updatedProduct, setUpdatedProduct] = useState({
     product_id: "",
@@ -26,10 +21,28 @@ const UpdateProduct = () => {
     release_date: "",
     product_status: true,
   });
-<<<<<<< HEAD
+
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    // Fetch the product data
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8090/products/${product_id}`
+        );
+        setProduct(response.data);
+        setUpdatedProduct(response.data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setIsError(true);
+      }
+    };
+
+    fetchProduct();
+  }, [product_id]);
 
   // Handle image upload
-  const [image, setImage] = useState(null);
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
     if (selectedImage && selectedImage.size < 5000000) { // 5MB limit
@@ -41,35 +54,34 @@ const UpdateProduct = () => {
 
   // Handle product form changes
   const handleUpdateChange = (e) => {
-    const value = e.target.value;
-    setUpdatedProduct({ ...updatedProduct, [e.target.name]: value });
+    const { name, value } = e.target;
+    setUpdatedProduct({ ...updatedProduct, [name]: value });
+  };
+
+  const handleStatusChange = (e) => {
+    setUpdatedProduct({
+      ...updatedProduct,
+      product_status: e.target.checked,
+    });
   };
 
   const ProductUpdate = async (e) => {
     e.preventDefault();
 
-    // Create FormData to handle file uploads and data
+    // Create FormData to handle file uploads and product data
     const formData = new FormData();
     if (image) {
       formData.append("imageFile", image);
     }
     formData.append("product", JSON.stringify(updatedProduct));
 
-    // Make sure the Content-Type is set to multipart/form-data
-=======
-  useEffect(() => {
-    fetchproduct();
-  }, []);
-
-  const fetchproduct = async () => {
->>>>>>> 3413e5eeb310797dcbdcb0cede4912f6bad294b5
     try {
       const response = await axios.put(
         `http://localhost:8090/products/update/${product_id}`,
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // This is necessary for file uploads
+            "Content-Type": "multipart/form-data", // necessary for file uploads
           },
         }
       );
@@ -77,39 +89,41 @@ const UpdateProduct = () => {
       setMsg("Product updated successfully!");
       navigate("/");
     } catch (error) {
-<<<<<<< HEAD
-      console.error("Error updating product:", error);
+      console.error("Error updating product", error);
       setMsg("Error updating product.");
     }
   };
 
-  // Fetch product details for the update form
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8090/products/${product_id}`);
-        setProduct(response.data);
-        setUpdatedProduct(response.data);
-      } catch (error) {
-        console.log("Error fetching product", error);
-        setIsError(true);
-      }
-    };
-
-    fetchProduct();
-  }, [product_id]);
-
   return (
     <div className="bg-slate-500 p-5">
       <div className="bg-gray-200 p-5 w-fit place-self-center rounded-3xl">
-        <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">UPDATE PRODUCT</h1>
+        <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
+          UPDATE PRODUCT
+        </h1>
         {msg && <p className="text-green-700 text-center">{msg}</p>}
-        
+
         <form onSubmit={ProductUpdate} className="flex flex-col gap-3">
           <table className="w-auto border-collapse">
             <tbody>
               <tr className="border-b-2 border-b-gray-300">
-                <td className="p-4"><label>Name:</label></td>
+                <td className="p-4">
+                  <label>Id:</label>
+                </td>
+                <td className="p-4">
+                  <input
+                    className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none px-4 py-1"
+                    type="text"
+                    name="product_id"
+                    value={updatedProduct.product_id}
+                    onChange={handleUpdateChange}
+                    disabled
+                  />
+                </td>
+              </tr>
+              <tr className="border-b-2 border-b-gray-300">
+                <td className="p-4">
+                  <label>Name:</label>
+                </td>
                 <td className="p-4">
                   <input
                     className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none px-4 py-1"
@@ -120,167 +134,23 @@ const UpdateProduct = () => {
                   />
                 </td>
               </tr>
-
-              {/* Other fields */}
               <tr className="border-b-2 border-b-gray-300">
-                <td className="p-4"><label>Description:</label></td>
+                <td className="p-4">
+                  <label>Description:</label>
+                </td>
                 <td className="p-4">
                   <textarea
                     name="product_desc"
                     className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
                     value={updatedProduct.product_desc}
                     onChange={handleUpdateChange}
-                  />
+                  ></textarea>
                 </td>
               </tr>
-=======
-      console.log("Error fetching product:", error);
-      setiserror(true);
-    }
-  };
-
-  // Image state
-  // const [image, setImage] = useState(null);
-
-  // const handleImageChange = (e) => {
-  //   const selectedImage = e.target.files[0];
-  //   if (selectedImage && selectedImage.size < 5000000) {
-  //     // 5MB limit, for example
-  //     setImage(selectedImage);
-  //   } else {
-  //     alert("Please select a valid image (max 5MB).");
-  //   }
-  // };
-
-  const handleUpdateChange = (e) => {
-    const value = e.target.value;
-    setUpdatedProduct({ ...updatedproduct, [e.target.name]: value });
-  };
-
-  const ProductUpdate = async (e) => {
-    e.preventDefault();
-
-    // Create FormData and append both product data and the image
-    const formData = new FormData();
-    formData.append(
-      "product",
-      new Blob([JSON.stringify(updatedproduct)], { type: "application/json" })
-    );
-    console.log(updatedproduct);
-
-    try {
-      const response = await axios.put(
-        `http://localhost:8090/products/update`,
-        formData
-      );
-      console.log("Product updated successfully!", response.data);
-      alert("Product updated successfully!");
-      setmsg("Product updated Successfully");
-      navigate("/");
-    } catch (error) {
-      console.error("Error updating product", error);
-      alert("Error updating product.");
-    }
-  };
-
-
-  return (
-    <>
-      <div className="bg-slate-500 p-5">
-        <div className="bg-gray-200 p-5 w-fit place-self-center rounded-3xl">
-          <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
-            UPDATE PRODUCT
-          </h1>
-          {msg && <p className="text-green-700 text-center">{msg}</p>}
-
-          <form onSubmit={ProductUpdate} className="flex flex-col gap-3">
-            <table className="w-auto border-collapse">
-              <tbody>
-                <tr className="border-b-2 border-b-gray-300 ">
-                  <td className="p-4">
-                    <label>Id:</label>
-                  </td>
-                  <td className="p-4">
-                    {" "}
-                    <input
-                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none px-4 py-1"
-                      type="text"
-                      name="product_id"
-                      value={updatedproduct.product_id}
-                      onChange={handleUpdateChange}
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b-2 border-b-gray-300 ">
-                  <td className="p-4">
-                    <label>Name:</label>
-                  </td>
-                  <td className="p-4">
-                    {" "}
-                    <input
-                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none px-4 py-1"
-                      type="text"
-                      name="product_name"
-                      value={updatedproduct.product_name}
-                      onChange={handleUpdateChange}
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b-2 border-b-gray-300">
-                  <td className="p-4">
-                    {" "}
-                    <label>Description:</label>
-                  </td>
-                  <td className="p-4">
-                    {" "}
-                    <textarea
-                      name="product_desc"
-                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
-                      value={updatedproduct.product_desc}
-                      onChange={handleUpdateChange}
-                    ></textarea>
-                  </td>
-                </tr>
-                <tr className="border-b-2 border-b-gray-300">
-                  <td className="p-4">
-                    {" "}
-                    <label>Brand:</label>
-                  </td>
-                  <td className="p-4">
-                    {" "}
-                    <input
-                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
-                      type="text"
-                      name="product_brand"
-                      value={updatedproduct.product_brand}
-                      onChange={handleUpdateChange}
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b-2 border-b-gray-300">
-                  <td className="p-4">
-                    <label>Price:</label>
-                  </td>
-                  <td className="p-4">
-                    {" "}
-                    <input
-                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
-                      type="number"
-                      name="product_price"
-                      min="0"
-                      value={updatedproduct.product_price}
-                      onChange={handleUpdateChange}
-                    />
-                  </td>
-                </tr>
-                <tr className="border-b-2 border-b-gray-300">
-                  <td className="p-4">
-                    <label>Category:</label>
-                  </td>
->>>>>>> 3413e5eeb310797dcbdcb0cede4912f6bad294b5
-
               <tr className="border-b-2 border-b-gray-300">
-                <td className="p-4"><label>Brand:</label></td>
+                <td className="p-4">
+                  <label>Brand:</label>
+                </td>
                 <td className="p-4">
                   <input
                     className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
@@ -291,69 +161,25 @@ const UpdateProduct = () => {
                   />
                 </td>
               </tr>
-
-<<<<<<< HEAD
               <tr className="border-b-2 border-b-gray-300">
-                <td className="p-4"><label>Price:</label></td>
+                <td className="p-4">
+                  <label>Price:</label>
+                </td>
                 <td className="p-4">
                   <input
                     className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
                     type="number"
                     name="product_price"
+                    min="0"
                     value={updatedProduct.product_price}
                     onChange={handleUpdateChange}
                   />
                 </td>
               </tr>
-=======
-                <tr className="border-b-2 border-b-gray-300">
-                  <td className="p-4">
-                    <label>Release Date:</label>
-                  </td>
-                  <td className="p-4">
-                    {" "}
-                    <input
-                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
-                      type="date"
-                      name="release_date"
-                      id="release_date"
-                      value={updatedproduct.release_date}
-                      onChange={handleUpdateChange}
-                    />
-                  </td>
-                </tr>
-                {/* <tr className="border-b-2 border-b-gray-300">
-                  <td className="p-4">
-                    <label>Image</label>
-                  </td>
-                  <td className="p-4">
-                  
-                    <input
-                      className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
-                      type="file"
-                      onChange={handleImageChange}
-                    />
-                  </td>
-                </tr> */}
-                <tr className="border-b-2 border-b-gray-300">
-                  <td className="p-4">
-                    <input
-                      type="checkbox"
-                      className="w-8 h-8"
-                      name="product_status"
-                      onChange={(e) =>
-                        setProduct({
-                          ...product,
-                          product_status: e.target.checked,
-                        })
-                      }
-                    />
-                    <label> Available</label>
-                  </td>
->>>>>>> 3413e5eeb310797dcbdcb0cede4912f6bad294b5
-
               <tr className="border-b-2 border-b-gray-300">
-                <td className="p-4"><label>Category:</label></td>
+                <td className="p-4">
+                  <label>Category:</label>
+                </td>
                 <td className="p-4">
                   <select
                     name="product_Category"
@@ -369,9 +195,10 @@ const UpdateProduct = () => {
                   </select>
                 </td>
               </tr>
-
               <tr className="border-b-2 border-b-gray-300">
-                <td className="p-4"><label>Quantity:</label></td>
+                <td className="p-4">
+                  <label>Quantity:</label>
+                </td>
                 <td className="p-4">
                   <input
                     className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
@@ -382,9 +209,10 @@ const UpdateProduct = () => {
                   />
                 </td>
               </tr>
-
               <tr className="border-b-2 border-b-gray-300">
-                <td className="p-4"><label>Release Date:</label></td>
+                <td className="p-4">
+                  <label>Release Date:</label>
+                </td>
                 <td className="p-4">
                   <input
                     className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
@@ -395,10 +223,22 @@ const UpdateProduct = () => {
                   />
                 </td>
               </tr>
-
-              {/* Image Input */}
               <tr className="border-b-2 border-b-gray-300">
-                <td className="p-4"><label>Image:</label></td>
+                <td className="p-4">
+                  <input
+                    type="checkbox"
+                    className="w-8 h-8"
+                    name="product_status"
+                    checked={updatedProduct.product_status}
+                    onChange={handleStatusChange}
+                  />
+                  <label> Available</label>
+                </td>
+              </tr>
+              <tr className="border-b-2 border-b-gray-300">
+                <td className="p-4">
+                  <label>Image:</label>
+                </td>
                 <td className="p-4">
                   <input
                     className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none p-2"
@@ -407,8 +247,6 @@ const UpdateProduct = () => {
                   />
                 </td>
               </tr>
-
-              {/* Submit Button */}
               <tr>
                 <td colSpan="2" className="text-center">
                   <button
