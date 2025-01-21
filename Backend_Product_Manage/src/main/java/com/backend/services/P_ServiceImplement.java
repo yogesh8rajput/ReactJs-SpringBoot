@@ -159,4 +159,10 @@ public Products update(@RequestBody Products products) {
      return productRepository.save(pro);
 }
 
+@Override
+public List<Products> search(String keyword) {
+	
+	return productRepository.searchProducts(keyword);
+}
+
 }

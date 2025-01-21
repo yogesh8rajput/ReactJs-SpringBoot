@@ -6,7 +6,7 @@ const UpdateProduct = () => {
   const { product_id } = useParams();
   const [product, setProduct] = useState(null);
   const [iserror, setiserror] = useState(false);
-  const [msg, setmsg] = useState();
+  const [msg, setmsg] = useState("");
 
   const navigate = useNavigate();
 
@@ -59,22 +59,15 @@ const UpdateProduct = () => {
   const ProductUpdate = async (e) => {
     e.preventDefault();
 
-    // Create FormData and append both product data and the image
-    const formData = new FormData();
-    formData.append(
-      "product",
-      new Blob([JSON.stringify(updatedproduct)], { type: "application/json" })
-    );
-    console.log(updatedproduct);
 
     try {
       const response = await axios.put(
         `http://localhost:8090/products/update`,
-        formData
+        updatedproduct
       );
       console.log("Product updated successfully!", response.data);
       alert("Product updated successfully!");
-      setmsg("Product updated Successfully");
+      // setmsg("Product updated Successfully");
       navigate("/");
     } catch (error) {
       console.error("Error updating product", error);
@@ -90,7 +83,7 @@ const UpdateProduct = () => {
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             UPDATE PRODUCT
           </h1>
-          {msg && <p className="text-green-700 text-center">{msg}</p>}
+          {/* {msg && <p className="text-green-700 text-center">{msg}</p>} */}
 
           <form onSubmit={ProductUpdate} className="flex flex-col gap-3">
             <table className="w-auto border-collapse">
