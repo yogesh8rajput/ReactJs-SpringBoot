@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -71,9 +72,19 @@ public class MyControl {
 	
 //	--------------------Update Product--------------------
 
-	@PutMapping("/update/{product_id}")
-	public Products update(@RequestPart("product") Products products, @PathVariable Integer product_id,@RequestPart("imageFile") MultipartFile imageFile) throws IOException{
-		return p_Services.update(products,product_id,imageFile);
+//	@PostMapping("/update/{product_id}")
+//	public Products update( @PathVariable Integer product_id,@RequestPart("product") Products products,@RequestPart("imageFile") MultipartFile imageFile) throws IOException{
+//		return p_Services.update(product_id,products,imageFile);
+//	}
+	
+//	@PostMapping("/update")
+//	public Products update(@RequestParam("product") Products products, @RequestParam("imageFile") MultipartFile imageFile) throws IOException{
+//		return p_Services.update(products,imageFile);
+//	}
+	
+	@PutMapping("/update")
+	public Products update(@RequestBody Products products) {
+		return p_Services.update(products);
 	}
 	
 	

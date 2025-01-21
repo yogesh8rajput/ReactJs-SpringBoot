@@ -30,7 +30,7 @@ public class Products {
 	private Date release_date;
 	
 	
-	private String image_name;
+//	private String image_name;
 	private String image_type;
 
 	@Lob 
@@ -97,12 +97,12 @@ public class Products {
 	public void setRelease_date(Date release_date) {
 		this.release_date = release_date;
 	}
-	public String getImage_name() {
-		return image_name;
-	}
-	public void setImage_name(String image_name) {
-		this.image_name = image_name;
-	}
+//	public String getImage_name() {
+//		return image_name;
+//	}
+//	public void setImage_name(String image_name) {
+//		this.image_name = image_name;
+//	}
 	public String getImage_type() {
 		return image_type;
 	}

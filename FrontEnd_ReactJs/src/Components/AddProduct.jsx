@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const AddProduct = () => {
   // const [iserror, setiserror] = useState(false);
-  const [msg,setmsg] = useState();
+  const [msg, setmsg] = useState();
   const [product, setProduct] = useState({
     // product_id: "",
     product_name: "",
@@ -18,9 +18,9 @@ const AddProduct = () => {
   // -----------x----------Image-------------x---------
 
   const [image, setImage] = useState(null);
-  const handleImageChange=(e)=>{
+  const handleImageChange = (e) => {
     setImage(e.target.files[0]);
-  }
+  };
 
   // -----------x----------------x-------------------------x---------
   const handleInputChange = (e) => {
@@ -50,33 +50,39 @@ const AddProduct = () => {
     //   // setiserror(true);
     // }
 
-// --------------------------------x---Submit---x----------------------
-const formData = new FormData();
-formData.append("imageFile",image);
-formData.append("product",new Blob([JSON.stringify(product)],{type:"application/json"}));
+    // --------------------------------x---Submit---x----------------------
+    const formData = new FormData();
+    formData.append("imageFile", image);
+    formData.append(
+      "product",
+      new Blob([JSON.stringify(product)], { type: "application/json" })
+    );
 
-axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type" : "multipart/form-data",},})
-.then((response)=>{
-  console.log("Product added successfull!",response.data);
-  // alert("Product added successfull!")
-  setmsg("Product added Successfully");
-  setProduct({
-    product_name: "",
-    product_desc: "",
-    product_brand: "",
-    product_price: "",
-    product_Category: "",
-    product_quantity: "",
-    release_date: "",
-    product_status: false,
-  })
-})
-.catch((error)=>{
-  console.error("Error adding Products" , error);
-  alert("Error adding Products.");
-})
+    axios
+      .post("http://localhost:8090/products/add", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => {
+        console.log("Product added successfull!", response.data);
+        // alert("Product added successfull!")
+        setmsg("Product added Successfully");
+        setProduct({
+          product_name: "",
+          product_desc: "",
+          product_brand: "",
+          product_price: "",
+          product_Category: "",
+          product_quantity: "",
+          release_date: "",
+          product_status: false,
+        });
+      })
+      .catch((error) => {
+        console.error("Error adding Products", error);
+        alert("Error adding Products.");
+      });
 
-// --------------------------------x----------/--------x----------------------
+    // --------------------------------x----------/--------x----------------------
   };
 
   // =======================================================
@@ -86,9 +92,8 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
         <div className="bg-gray-200 p-5 w-fit place-self-center rounded-3xl">
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             ADD PRODUCT
-
           </h1>
-          {msg&&<p className="text-green-700 text-center">{msg}</p>}
+          {msg && <p className="text-green-700 text-center">{msg}</p>}
           <form onSubmit={ProductRegister} className="flex flex-col gap-3">
             <table className="w-auto border-collapse">
               <tbody>
@@ -227,15 +232,21 @@ axios.post("http://localhost:8090/products/add",formData,{headers:{"Content-Type
                       type="checkbox"
                       className="w-8 h-8"
                       name="product_status"
-                      onChange={(e) => setProduct({...product
-                        ,product_status:e.target.checked
-                      })}
+                      onChange={(e) =>
+                        setProduct({
+                          ...product,
+                          product_status: e.target.checked,
+                        })
+                      }
                     />
                     <label> Available</label>
                   </td>
 
                   <td className="text-center">
-                    <button className="px-4 py-1 bg-teal-700 text-white font-bold text-2xl" type="submit">
+                    <button
+                      className="px-4 py-1 bg-teal-700 text-white font-bold text-2xl"
+                      type="submit"
+                    >
                       ADD
                     </button>
                     {/* <input
