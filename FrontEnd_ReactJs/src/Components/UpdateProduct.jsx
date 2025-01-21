@@ -19,7 +19,7 @@ const UpdateProduct = () => {
     product_Category: "",
     product_quantity: "",
     release_date: "",
-    product_status: true,
+    product_status: false,
   });
   useEffect(() => {
     fetchproduct();
