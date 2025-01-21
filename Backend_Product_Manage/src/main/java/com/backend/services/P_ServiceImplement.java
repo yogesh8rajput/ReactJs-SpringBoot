@@ -1,6 +1,8 @@
+
 package com.backend.services;
 
 import java.io.IOException;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,13 +14,16 @@ import org.springframework.web.multipart.MultipartFile;
 import com.backend.entity.Products;
 import com.backend.repositories.ProductRepository;
 
-@Service
-public class P_ServiceImplement implements P_Services {
+@ Service
+public class P_ServiceImplement implements P_Services{
+	
+	@Autowired
+	ProductRepository productRepository;
+	
+	public P_ServiceImplement(ProductRepository productRepository) {
+		this.productRepository= productRepository;
+	}
 
-<<<<<<< HEAD
-    @Autowired
-    private ProductRepository productRepository;
-=======
 	@Override
 	public Products add(Products products, MultipartFile imageFile) throws IOException  {
 //		products.setImage_name(imageFile.getOriginalFilename());
@@ -26,32 +31,23 @@ public class P_ServiceImplement implements P_Services {
 		products.setImage_data(imageFile.getBytes());
 		return productRepository.save(products);
 	}
->>>>>>> 3413e5eeb310797dcbdcb0cede4912f6bad294b5
 
-    public P_ServiceImplement(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+	@Override
+	public List<Products> getAll() {
+		return (List<Products>)productRepository.findAll();
+	}
 
-    @Override
-    public Products add(Products products, MultipartFile imageFile) throws IOException {
-        products.setImage_name(imageFile.getOriginalFilename());
-        products.setImage_type(imageFile.getContentType());
-        products.setImage_data(imageFile.getBytes());
-        return productRepository.save(products);
-    }
+	@Override
+	public Products getOne(Integer product_id) {
+		Optional<Products> op = productRepository.findById(product_id);
+		return op.get();
+	}
 
-    @Override
-    public List<Products> getAll() {
-        return (List<Products>) productRepository.findAll();
-    }
+	@Override
+	public void delete(Integer product_id) {
+		productRepository.deleteById(product_id);
+	}
 
-<<<<<<< HEAD
-    @Override
-    public Products getOne(Integer product_id) {
-        return productRepository.findById(product_id).orElseThrow(() -> 
-            new RuntimeException("Product not found with id: " + product_id));
-    }
-=======
 //	@Override
 //	public Products update(Integer product_id,Products products,MultipartFile imageFile) throws IOException {
 //		 Optional<Products> op = productRepository.findById(product_id);
@@ -134,45 +130,17 @@ public class P_ServiceImplement implements P_Services {
 //		
 //	}
 	
->>>>>>> 3413e5eeb310797dcbdcb0cede4912f6bad294b5
 
-    @Override
-    public void delete(Integer product_id) {
-        if (!productRepository.existsById(product_id)) {
-            throw new RuntimeException("Product not found with id: " + product_id);
-        }
-        productRepository.deleteById(product_id);
-    }
+	@Override
+	public byte[] getImageById(Integer product_id) {
 
-    @Override
-    public Products update(Products products, Integer product_id, MultipartFile imageFile) throws IOException {
-        Products existingProduct = productRepository.findById(product_id)
-                .orElseThrow(() -> new RuntimeException("Product not found with id: " + product_id));
+		Optional<Products> op = productRepository.findById(product_id);
+		Products pro = op.get();
+		byte[] imageFile = pro.getImage_data();
+		
+		return imageFile;
+	}
 
-<<<<<<< HEAD
-        if (products.getProduct_name() != null) existingProduct.setProduct_name(products.getProduct_name());
-        if (products.getProduct_desc() != null) existingProduct.setProduct_desc(products.getProduct_desc());
-        if (products.getProduct_brand() != null) existingProduct.setProduct_brand(products.getProduct_brand());
-        if (products.getProduct_price() != null) existingProduct.setProduct_price(products.getProduct_price());
-        if (products.getProduct_Category() != null) existingProduct.setProduct_Category(products.getProduct_Category());
-        if (products.getProduct_quantity() != null) existingProduct.setProduct_quantity(products.getProduct_quantity());
-        if (products.getProduct_status() != null) existingProduct.setProduct_status(products.getProduct_status());
-
-        if (imageFile != null && !imageFile.isEmpty()) {
-            existingProduct.setImage_data(imageFile.getBytes());
-           
-        }
-
-        return productRepository.save(existingProduct);
-    }
-
-    @Override
-    public byte[] getImageById(Integer product_id) {
-        Products product = productRepository.findById(product_id)
-                .orElseThrow(() -> new RuntimeException("Product not found with id: " + product_id));
-        return product.getImage_data();
-    }
-=======
 
 @Override
 public Products update(@RequestBody Products products) {
@@ -192,5 +160,4 @@ public Products update(@RequestBody Products products) {
      return productRepository.save(pro);
 }
 
->>>>>>> 3413e5eeb310797dcbdcb0cede4912f6bad294b5
 }
