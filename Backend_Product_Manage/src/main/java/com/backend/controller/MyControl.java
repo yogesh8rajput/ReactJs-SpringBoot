@@ -25,7 +25,7 @@ import com.backend.services.P_Services;
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin("http://localhost:5177")
+@CrossOrigin("http://localhost:5173")
 public class MyControl {
 
 //	@GetMapping("/")
