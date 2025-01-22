@@ -28,4 +28,6 @@ public interface P_Services {
 	public Products update(Products products);
 	
 	public byte[] getImageById(Integer product_id);
+	
+	public List<Products> search(String keyword);
 }

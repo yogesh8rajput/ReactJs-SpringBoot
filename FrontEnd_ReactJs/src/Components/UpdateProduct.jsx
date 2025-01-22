@@ -69,7 +69,7 @@ const UpdateProduct = () => {
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             UPDATE PRODUCT
           </h1>
-          {msg && <p className="text-green-700 text-center">{msg}</p>}
+          {/* {msg && <p className="text-green-700 text-center">{msg}</p>} */}
 
           <form onSubmit={ProductUpdate} className="flex flex-col gap-3">
             <table className="w-auto border-collapse">

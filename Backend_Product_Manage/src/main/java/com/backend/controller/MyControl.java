@@ -97,5 +97,14 @@ public class MyControl {
 		
 		
 	}
+	
+	
+//	--------------------Search Feature--------------------
+	
+	@GetMapping("/search")
+	public List<Products> search(@RequestParam String keyword){
+		return p_Services.search(keyword);
+	}
+	
 
 }
