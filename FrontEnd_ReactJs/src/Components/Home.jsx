@@ -1,6 +1,7 @@
 import axios from "axios";
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Filter from "./Filter";
 
 const Home = () => {
   const [products, setproducts] = useState([]);
@@ -35,12 +36,13 @@ const Home = () => {
   }
   return (
     <>
+    {/* <Filter/> */}
       <div className="cardbox flex flex-wrap bg-slate-900">
         {products.map((product, index) => (
-          <Link to={`products/${product.product_id}`}>
+          <Link to={`products/${product.product_id}`} key={index}>
             <div
               className="card bg-slate-100 rounded p-6 m-5 place-items-center"
-              key={index}
+              
             >
               <div className="">
                 <img
@@ -56,10 +58,10 @@ const Home = () => {
 
               <table className="w-full m-4 ">
                 <tbody>
-                  <tr>
+                  {/* <tr>
                     <td>Release Date</td>
                     <td> {product.release_date}</td>
-                  </tr>
+                  </tr> */}
 
                   <tr>
                     <td>

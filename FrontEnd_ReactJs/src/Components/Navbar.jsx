@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import { FaSearchengin } from "react-icons/fa6";
+import { ImHome } from "react-icons/im";
+import { MdAddToPhotos } from "react-icons/md";
 
 class Navbar extends Component{
 
@@ -11,10 +13,10 @@ class Navbar extends Component{
 
 <div className='text-5xl'>Products</div>
 <ul className="flex gap-4 items-center ">
-    <li><Link to="/">HOME</Link></li>
-    <li><Link to="/add">ADD </Link></li>
-    <li><a href="/">CONTACT</a></li>
-    <li><a href="">EXTRA</a></li>
+    <li ><Link to="/" className="flex gap-1">HOME <ImHome className="text-2xl"/></Link></li>
+    <li><Link to="/add" className="flex gap-1">ADD <MdAddToPhotos className="text-2xl"/></Link></li>
+    {/* <li><a href="/">CONTACT</a></li> */}
+    <li className="border-2 border-gray-500 p-2 rounded-xl"><Link to="/search" className="text-slate-600 flex gap-2 ">Search<FaSearchengin className="text-2xl text-black" /></Link></li>
 </ul>
 </div>
         </>
