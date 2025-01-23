@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.web.csrf.CsrfToken;
+//import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -111,10 +111,10 @@ public class MyControl {
 		return p_Services.search(keyword);
 	}
 	//------------------Spring Security-----------------
-    @GetMapping("/Security")
-    public String Secure( HttpServletRequest request) {
-        return "Welcome To Security"+request.getSession().getId();
-    }
+//    @GetMapping("/Security")
+//    public String Secure( HttpServletRequest request) {
+//        return "Welcome To Security"+request.getSession().getId();
+//    }
     
     
 //    private List<User> user=new ArrayList<>(List.of(
@@ -137,10 +137,10 @@ public class MyControl {
        return p_Services.adduser(user);
     }
     
-    @GetMapping("/csrf")
-    public CsrfToken getcrftoken(HttpServletRequest request) {
-        return (CsrfToken) request.getAttribute("_csrf");
-    }
+//    @GetMapping("/csrf")
+//    public CsrfToken getcrftoken(HttpServletRequest request) {
+//        return (CsrfToken) request.getAttribute("_csrf");
+//    }
     
     
 }
