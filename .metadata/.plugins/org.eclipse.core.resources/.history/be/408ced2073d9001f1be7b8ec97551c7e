@@ -1,0 +1,77 @@
+package com.backend.config;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .cors(corsConfig -> corsConfig.configurationSource(getCorsConfigurationSource()))
+                .authorizeRequests(request -> request.anyRequest().authenticated())
+                .httpBasic(org.springframework.security.config.Customizer.withDefaults())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .build();
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(passwordEncoder());
+        provider.setUserDetailsService(userDetailsService);
+        return provider;
+    }
+
+    private PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(); // Use BCryptPasswordEncoder for security
+    }
+
+    private static CorsConfigurationSource getCorsConfigurationSource() {
+        var corsConfig = new CorsConfiguration();
+        corsConfig.setAllowedMethods(List.of("*"));
+        corsConfig.setAllowedOrigins(List.of("http://localhost:5173")); // Adjust if needed
+        var source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfig);
+        return (CorsConfigurationSource) source;
+    }
+
+    // In case you need to use an in-memory UserDetailsService for testing or a fallback:
+    // @Bean
+    // public UserDetailsService inMemoryUserDetailsService() {
+    //     UserDetails user1 = User
+    //             .withUsername("deepu")
+    //             .password(passwordEncoder().encode("pagal"))
+    //             .roles("USER")
+    //             .build();
+    //     UserDetails user2 = User
+    //             .withUsername("yudi")
+    //             .password(passwordEncoder().encode("pagal"))
+    //             .roles("ADMIN")
+    //             .build();
+    //     return new InMemoryUserDetailsManager(user1, user2);
+    // }
+}
