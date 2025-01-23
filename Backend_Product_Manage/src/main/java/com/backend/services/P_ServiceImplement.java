@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.backend.entity.Products;
+import com.backend.entity.User;
 import com.backend.repositories.ProductRepository;
+import com.backend.repositories.UserRepository;
 
 @ Service
 public class P_ServiceImplement implements P_Services{
+	@Autowired
+	UserRepository userRepository;
 	
 	@Autowired
 	ProductRepository productRepository;
@@ -164,6 +168,25 @@ public Products update(@RequestBody Products products) {
 public List<Products> search(String keyword) {
 	
 	return productRepository.searchProducts(keyword);
+}
+
+@Override
+public List<User> getuser() {
+	return (List<User>)userRepository.findAll();
+}
+
+@Override
+public User adduser(User user) {
+	
+	return userRepository.save(user);
+}
+
+@Override
+public User get(Integer id) {
+	
+	Optional<User> op1 = userRepository.findById(id);
+	return op1.get();
+
 }
 
 }

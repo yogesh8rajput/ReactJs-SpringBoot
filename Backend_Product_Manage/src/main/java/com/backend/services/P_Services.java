@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.backend.entity.Products;
+import com.backend.entity.User;
 
 @Service
 public interface P_Services {
@@ -30,4 +31,16 @@ public interface P_Services {
 	public byte[] getImageById(Integer product_id);
 	
 	public List<Products> search(String keyword);
+	
+	
+	
+//	user method
+	
+	
+	
+	public List<User> getuser(); 
+		
+	public User adduser(User user);
+	
+	public User get(Integer id);
 }

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.backend.entity.Products;
+import com.backend.entity.User;
 
 public interface ProductRepository extends CrudRepository<Products, Integer>,JpaRepository<Products, Integer> {
 
@@ -14,5 +15,7 @@ public interface ProductRepository extends CrudRepository<Products, Integer>,Jpa
 	"LOWER(p.product_name) LIKE LOWER(CONCAT('%', :keyword, '%')) OR "
 	+ "LOWER(p.product_Category) LIKE LOWER(CONCAT('%', :keyword, '%'))")
 	List<Products> searchProducts(String keyword);
+
+	
 
 }
