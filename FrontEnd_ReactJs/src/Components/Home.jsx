@@ -10,7 +10,12 @@ const Home = () => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await axios.get("http://localhost:8090/products");
+        const response = await axios.get("http://localhost:8090/products",{
+          auth:{
+            username:"deep",
+            password:"1234"
+          }
+        });
         setproducts(response.data);
         console.log(response.data);
       } catch (error) {
@@ -51,9 +56,9 @@ const Home = () => {
                   className="h-64 w-44 object-cover"
                 />
               </div>
-              <h1 className="font-bold text-3xl">{product.product_brand}</h1>
+              <h1 className="font-bold text-3xl">{product.product_name}</h1>
               <p className="p-2 text-purple-500 text-xl">
-                {product.product_name}
+                Brand : {product.product_brand}
               </p>
 
               <table className="w-full m-4 ">
