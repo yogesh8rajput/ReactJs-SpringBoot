@@ -1,7 +1,7 @@
 import axios from "axios";
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Filter from "./Filter";
+// import Filter from "./Filter";
 
 const Home = () => {
   const [products, setproducts] = useState([]);
@@ -12,7 +12,7 @@ const Home = () => {
       try {
         const response = await axios.get("http://localhost:8090/products");
         setproducts(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.log("error" + error);
         setiserror(true);
@@ -41,14 +41,14 @@ const Home = () => {
         {products.map((product, index) => (
           <Link to={`products/${product.product_id}`} key={index}>
             <div
-              className="card bg-slate-100 rounded p-6 m-5 place-items-center"
+              className="card bg-slate-100 rounded p-6 m-5 place-items-center w-96"
               
             >
               <div className="">
                 <img
                   src={`data:image/jpg;base64,${product.image_data}`}
                   alt="Not Found"
-                  className="h-64 w-44 object-cover"
+                  className="h-64 object-cover"
                 />
               </div>
               <h1 className="font-bold text-3xl">{product.product_name}</h1>

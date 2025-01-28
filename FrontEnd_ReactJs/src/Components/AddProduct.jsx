@@ -88,7 +88,7 @@ const AddProduct = () => {
   // =======================================================
   return (
     <>
-      <div className="bg-slate-500 p-5">
+      <div className="bg-slate-900 p-5">
         <div className="bg-gray-200 p-5 w-fit place-self-center rounded-3xl">
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             ADD PRODUCT

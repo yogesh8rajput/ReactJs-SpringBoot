@@ -20,20 +20,34 @@ public class MuUserDetailsService implements UserDetailsService {
     public MuUserDetailsService(UserRepository userRepository) {
     	this.userRepository  = userRepository;
     }
-    
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//         Find the user by username from the repository
-//        Optional<User> userOpt = Optional.of(userRepository.findByUsername(username));
-        User user = userRepository.findByUsername(username);
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		 User user = userRepository.findByUsername(username);
        
-//         If user is not found, throw exception
+////         If user is not found, throw exception
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
         
-//         Return a Principal object with the found user
+////         Return a Principal object with the found user
        
         return new Principal(user);
-    }
+	}
+    
+//    @Override
+//    public UserDetails loadUserByUsername(String ) throws UsernameNotFoundException {
+////         Find the user by username from the repository
+////        Optional<User> userOpt = Optional.of(userRepository.findByUsername(username));
+//        User user = userRepository.findByUser_email(username);
+//       
+////         If user is not found, throw exception
+//        if (user == null) {
+//            throw new UsernameNotFoundException("User not found with username: " + username);
+//        }
+//        
+////         Return a Principal object with the found user
+//       
+//        return new Principal(user);
+//    }
 }
