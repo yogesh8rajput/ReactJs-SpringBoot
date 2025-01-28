@@ -33,7 +33,7 @@ public class U_Service {
 //		products.setImage_name(imageFile.getOriginalFilename());
 //		user.setImage_type(imageFile.getContentType());
 //		user.setImage_data(imageFile.getBytes());
-		user.setPass(bCryptPasswordEncoder.encode(user.getPass()));
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		return userRepository.save(user);
 	}
 //	

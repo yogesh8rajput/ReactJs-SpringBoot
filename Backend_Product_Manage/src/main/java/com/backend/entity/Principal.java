@@ -23,7 +23,7 @@ public class Principal implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPass(); // Assuming User class has a getPass() method.
+        return user.getPassword(); // Assuming User class has a getPass() method.
     }
 
     @Override

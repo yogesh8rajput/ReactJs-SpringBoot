@@ -5,13 +5,14 @@ import Navbar from './Components/Navbar'
 import Product from "./Components/Product";
 import AddProduct from "./Components/AddProduct";
 import UpdateProduct from "./Components/UpdateProduct";
-import Search from "./Components/Search";
+// import Search from "./Components/Search";
 import Filter from "./Components/Filter";
+import Registration from "./Components/Registration";
 
 function App() {
 
   return (
-    <>
+    <div>
     <Navbar/>
     <Routes>
     <Route path="/" element={<Home/>}/>
@@ -19,8 +20,9 @@ function App() {
     <Route path="products/update/:product_id" element={<UpdateProduct/>}/>
     <Route path="/add" element={<AddProduct/>}/>
     <Route path="/search" element={<Filter/>}/>
+    <Route path="/register" element={<Registration/>}/>
 </Routes>
-    </>
+    </div>
   )
 }
 
