@@ -8,6 +8,7 @@ import UpdateProduct from "./Components/UpdateProduct";
 // import Search from "./Components/Search";
 import Filter from "./Components/Filter";
 import Registration from "./Components/Registration";
+import Login from "./Components/Login";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     <Route path="/add" element={<AddProduct/>}/>
     <Route path="/search" element={<Filter/>}/>
     <Route path="/register" element={<Registration/>}/>
+    <Route path="/login" element={<Login/>}/>
 </Routes>
     </div>
   )

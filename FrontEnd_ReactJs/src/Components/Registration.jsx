@@ -140,11 +140,7 @@ const Registration = () => {
                     >
                       ADD
                     </button>
-                    {/* <input
-                      type="submit"
-                      value="Add"
-                      className="px-4 py-1 bg-teal-700 text-white font-bold text-2xl  "
-                    /> */}
+                    
                   </td>
                 </tr>
               </tbody>

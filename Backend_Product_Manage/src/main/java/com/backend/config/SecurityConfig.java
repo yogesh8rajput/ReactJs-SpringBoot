@@ -40,6 +40,7 @@ public class SecurityConfig {
 				.cors(org.springframework.security.config.Customizer.withDefaults())
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/products").permitAll()
+						.requestMatchers("/user/login").permitAll()
 						.requestMatchers("/user/register").permitAll().anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())
 				.build();

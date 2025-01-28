@@ -18,7 +18,7 @@ public class Principal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // Ideally, you would return multiple roles if they exist, for now we assume a default role of "USER"
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+        return Collections.singletonList(new SimpleGrantedAuthority("USER"));
     }
 
     @Override
