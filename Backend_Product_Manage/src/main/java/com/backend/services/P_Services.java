@@ -37,10 +37,10 @@ public interface P_Services {
 //	user method
 	
 	
-	
-	public List<User> getuser(); 
-		
-	public User adduser(User user);
-	
-	public User get(Integer id);
+//	
+//	public List<User> getuser(); 
+//		
+//	public User adduser(User user);
+//	
+//	public User get(Integer id);
 }

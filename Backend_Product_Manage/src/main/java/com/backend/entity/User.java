@@ -11,20 +11,22 @@ public class User {
 	@Id
 	private int id;
 	private String pass;
+	private String username;
+//	private String post;
+	
 	public String getPass() {
 		return pass;
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	private String username;
-	public String getUsername() {
+		public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	private String post;
+	
 	public int getId() {
 		return id;
 	}
@@ -32,12 +34,8 @@ public class User {
 		this.id = id;
 	}
 	
-	public String getPost() {
-		return post;
-	}
-	public void setPost(String post) {
-		this.post = post;
-	}
+	
+	
 	
 	}
 	

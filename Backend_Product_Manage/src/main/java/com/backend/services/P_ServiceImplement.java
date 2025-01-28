@@ -170,23 +170,23 @@ public List<Products> search(String keyword) {
 	return productRepository.searchProducts(keyword);
 }
 
-@Override
-public List<User> getuser() {
-	return (List<User>)userRepository.findAll();
-}
-
-@Override
-public User adduser(User user) {
-	
-	return userRepository.save(user);
-}
-
-@Override
-public User get(Integer id) {
-	
-	Optional<User> op1 = userRepository.findById(id);
-	return op1.get();
-
-}
+//@Override
+//public List<User> getuser() {
+//	return (List<User>)userRepository.findAll();
+//}
+//
+//@Override
+//public User adduser(User user) {
+//	
+//	return userRepository.save(user);
+//}
+//
+//@Override
+//public User get(Integer id) {
+//	
+//	Optional<User> op1 = userRepository.findById(id);
+//	return op1.get();
+//
+//}
 
 }

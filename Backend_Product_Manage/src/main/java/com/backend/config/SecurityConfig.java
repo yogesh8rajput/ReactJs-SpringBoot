@@ -1,72 +1,73 @@
 package com.backend.config;
 
-import java.beans.Customizer;
-import java.net.Authenticator.RequestorType;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.authentication.AuthenticationProvider;
-//import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.config.http.SessionCreationPolicy;
-//import org.springframework.security.core.userdetails.User;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-//import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-//import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import jakarta.websocket.Session;
 
 
 @Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
 public class SecurityConfig {
 
-//	@Autowired
-//	private UserDetailsService userDetailsService;
-//	
-//	@Bean
-//	public SecurityFilterChain securityFilterChain(HttpSecurity https) throws Exception
-//	{
-//		return https
-//                .csrf(customizer -> customizer.disable())
-//                .authorizeHttpRequests(request -> request.anyRequest().authenticated())
-//                .httpBasic(org.springframework.security.config.Customizer.withDefaults())
-//                .sessionManagement(session -> 
-//                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//              .build();
-//	}
-//	
-////	@Bean
-////	public UserDetailsService userDetailsService() {
-////		UserDetails user1= User
-////				.withDefaultPasswordEncoder()
-////				.username("deepu")
-////				.password("pagal")
-////				.roles("USER")
-////				.build();
-////		
-////		
-////		UserDetails user2= User
-////				.withDefaultPasswordEncoder()
-////				.username("yudi")
-////				.password("pagal")
-////				.roles("ADMIN")
-////				.build();
-////		return new InMemoryUserDetailsManager(user1,user2);
-////		
-////	}
-//	
-//	
-//	@Bean
-//	public AuthenticationProvider authenticationProvider()
-//	{
-//		DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
-//		provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
-//		provider.setUserDetailsService(userDetailsService);
-//		return provider;
-//	}
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity https) throws Exception
+	{
+		return https
+				.csrf(AbstractHttpConfigurer::disable)
+				.cors(org.springframework.security.config.Customizer.withDefaults())
+				.authorizeHttpRequests(auth -> auth
+						.requestMatchers("/products").permitAll()
+						.requestMatchers("/user/register").permitAll().anyRequest().authenticated())
+				.httpBasic(Customizer.withDefaults())
+				.build();
+				
+	}
+			
+	
+	
+	
+	@Bean
+	public AuthenticationProvider authenticationProvider()
+	{
+		DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
+		provider.setPasswordEncoder(bCryptPasswordEncoder());
+		provider.setUserDetailsService(userDetailsService);
+		return provider;
+	}
+	
+	
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+		configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
+		configuration.setAllowCredentials(true);
+		configuration.addAllowedHeader("*");
+		UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**",configuration);
+		return (CorsConfigurationSource) source;
+	}
 }
