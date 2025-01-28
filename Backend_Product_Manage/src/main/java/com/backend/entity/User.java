@@ -12,7 +12,7 @@ public class User {
 	private int id;
 	private String pass;
 	private String username;
-	private String post;
+//	private String post;
 	
 	public String getPass() {
 		return pass;
@@ -34,12 +34,8 @@ public class User {
 		this.id = id;
 	}
 	
-	public String getPost() {
-		return post;
-	}
-	public void setPost(String post) {
-		this.post = post;
-	}
+	
+	
 	
 	}
 	

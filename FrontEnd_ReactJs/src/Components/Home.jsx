@@ -10,12 +10,7 @@ const Home = () => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await axios.get("http://localhost:8090/products",{
-          auth:{
-            username:"deep",
-            password:"1234"
-          }
-        });
+        const response = await axios.get("http://localhost:8090/products");
         setproducts(response.data);
         console.log(response.data);
       } catch (error) {

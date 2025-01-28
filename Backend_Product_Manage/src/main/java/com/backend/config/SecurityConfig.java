@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 
 
@@ -39,8 +39,8 @@ public class SecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 				.cors(org.springframework.security.config.Customizer.withDefaults())
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/login").permitAll()
-						.requestMatchers("/register").permitAll().anyRequest().authenticated())
+						.requestMatchers("/products").permitAll()
+						.requestMatchers("/user/register").permitAll().anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())
 				.build();
 				
@@ -59,15 +59,15 @@ public class SecurityConfig {
 	}
 	
 	
-//	@Bean
-//	CorsConfigurationSource corsConfigurationSource() {
-//		CorsConfiguration configuration = new CorsConfiguration();
-//		configuration.setAllowedOrigins(List.of("http://localhost:5173"));
-//		configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
-//		configuration.setAllowCredentials(true);
-//		configuration.addAllowedHeader("*");
-//		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//		source.registerCorsConfiguration("/**",configuration);
-//		return (CorsConfigurationSource) source;
-//	}
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+		configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
+		configuration.setAllowCredentials(true);
+		configuration.addAllowedHeader("*");
+		UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**",configuration);
+		return (CorsConfigurationSource) source;
+	}
 }

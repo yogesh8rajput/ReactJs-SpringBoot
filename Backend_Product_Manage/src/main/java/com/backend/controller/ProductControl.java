@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.web.csrf.CsrfToken;
+//import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,12 +32,6 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping("/products")
 @CrossOrigin("http://localhost:5173")
 public class ProductControl {
-
-//	@GetMapping("/")
-//	@ResponseBody
-//	public String index() {
-//		return "hello";
-//	}
 
 	
 	@Autowired
@@ -118,36 +112,12 @@ public class ProductControl {
 	
 	
 	//------------------Spring Security-----------------
-    @GetMapping("/Security")
-    public String Secure( HttpServletRequest request) {
-        return "Welcome To Security"+request.getSession().getId();
-    }
+//    @GetMapping("/Security")
+//    public String Secure( HttpServletRequest request) {
+//        return "Welcome To Security"+request.getSession().getId();
+//    }
+//    
     
-    
-//    private List<User> user=new ArrayList<>(List.of(
-//    		new User(id:101,name:"hello",post:"welcome"),
-//    		new User(id:102,name:"hello",post:"welcome")
-//    		));
-    
-    @GetMapping("/User")
-    public List<User> getuser() {
-        return p_Services.getuser();
-    }
-    
-    @GetMapping("User/{id}")
-	public User get(@PathVariable Integer id) {
-		return p_Services.get(id);
-	}
-    
-    @PostMapping("/User")
-    public User addUser(@RequestBody User user) {
-       return p_Services.adduser(user);
-    }
-    
-    @GetMapping("/csrf")
-    public CsrfToken getcrftoken(HttpServletRequest request) {
-        return (CsrfToken) request.getAttribute("_csrf");
-    }
     
     
 }
