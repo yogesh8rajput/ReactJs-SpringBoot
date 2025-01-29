@@ -1,10 +1,13 @@
 package com.backend.services;
 
 import java.io.IOException;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -36,12 +39,7 @@ public class U_Service {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		return userRepository.save(user);
 	}
-//	
-//	public void registerUser(User user) {
-//	    String encodedPassword = passwordEncoder.encode(user.getPass());
-//	    user.setPass(encodedPassword);
-//	    userRepository.save(user);
-//	}
+
 
 
 	public List<User> getAll() {
@@ -56,7 +54,21 @@ public class U_Service {
 	public void delete(Integer id) {
 		userRepository.deleteById(id);
 	}
-
-
+	
+//	-------------------------For Login Authentication-------------------------------------
+	
+	public boolean authenticate(String username,String password) {
+		User user = userRepository.findByUsername(username);
+		
+		if(!user.getUsername().equals(username)) {
+			throw new UsernameNotFoundException("User doesn't exist in the database");
+		}
+		
+		if (!bCryptPasswordEncoder.matches(password, user.getPasswordhash())) {
+            throw  new BadCredentialsException("The password is incorrect");
+        }
+		
+		return true;
+	}
 
 }

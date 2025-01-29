@@ -17,6 +17,11 @@ public class User {
 	private String password;
 	private String username;
 	private String city;
+	private String passwordhash;
+	
+	
+	
+	
 	public int getUser_id() {
 		return user_id;
 	}
@@ -47,6 +52,12 @@ public class User {
 	}
 	public void setCity(String city) {
 		this.city = city;
+	}
+	public String getPasswordhash() {
+		return passwordhash;
+	}
+	public void setPasswordhash(String passwordhash) {
+		this.passwordhash = passwordhash;
 	}
 	
 	

@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 //import org.springframework.web.multipart.MultipartFile;
 
+import com.backend.entity.LoginRequest;
 //import com.backend.entity.Products;
 import com.backend.entity.User;
 //import com.backend.services.P_Services;
 import com.backend.services.U_Service;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
@@ -59,4 +62,30 @@ public class UserControl {
 	public void delete(@PathVariable Integer id) {
 		 u_Service.delete(id);
 	}
+
+	
+//	--------------------Login of User--------------------
+
+	@PostMapping("/login")
+	public String login(@RequestBody LoginRequest loginRequest , HttpSession session) {
+		
+		try {
+			
+			boolean isauthenticated = u_Service.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
+			
+			if(isauthenticated) {
+				session.setAttribute("user", loginRequest.getUsername());
+				return "Login Success";
+			}
+			else {
+				return "Invalid password";
+			}
+		} 
+			catch (Exception e) {
+
+//			System.out.println(e.getMessage());
+		return e.getMessage();
+		}
+	}
+	
 }
