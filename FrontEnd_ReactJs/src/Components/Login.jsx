@@ -1,44 +1,38 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 const Login = () => {
 
-     const [msg, setmsg] = useState();
+    //  const [msg, setmsg] = useState();
     
-      const [user, setUser] = useState({
-        username: "",
-        password: "",
-        
-      });
-    
-      const handleInputChange = (e) => {
-        const value = e.target.value;
-    
-        setUser({ ...user, [e.target.name]: value });
-        // console.log(value)
-      };
+      const [username, setUsername] = useState("");
+      const [password, setPassword] = useState("");
+      const [error, setError] = useState("");
+    const navigate = useNavigate();
+     const {login} = useAuth();
     
       const UserLogin = async (e) => {
         e.preventDefault();
+setError('')
 
+const logData={
+  username,password
+}
         try {
-            axios.post("http://localhost:8090/user/login", user).then((response) => {
-                // console.log(response.data)
-            //  if(response.ok){
-                setmsg("User Login Successfully!");
-        
-                setUser({
-                  username: "",
-                  password: "",
-                 
-                });
-                console.log("Logged in")
-            // }
-            
-            });
+            const response = await axios.post("http://localhost:8090/user/login", logData);
+               console.log(response)
+             if (response.status === 200){
+              // console.log("Login success")
+login();
+              navigate("/")
+             }
+             else{
+              console.log("login failed")
+             }
         } catch (error) {
-            setmsg("Unable to Login User.");
-            console.log(error);
+console.log("An error occured" ,error)
         }
       }
 
@@ -51,7 +45,7 @@ const Login = () => {
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             Login
           </h1>
-          {msg && <p className="text-green-700 font-semibold text-xl text-center m-5">{msg}</p>}
+          {/* {msg && <p className="text-green-700 font-semibold text-xl text-center m-5">{msg}</p>} */}
           <form className="flex flex-col gap-3" onSubmit={UserLogin} >
             <table className="w-auto border-collapse">
               <tbody>
@@ -66,8 +60,8 @@ const Login = () => {
                       className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none px-4 py-1"
                       type="text"
                       name="username"
-                      value={user.username}
-                      onChange={handleInputChange}
+                      value={username}
+                      onChange={(e)=>setUsername(e.target.value)}
                     />
                   </td>
                 </tr>
@@ -82,8 +76,9 @@ const Login = () => {
                       className="border-b-teal-700 border-b-2 bg-transparent w-full outline-none px-4 py-1"
                       type="password"
                       name="password"
-                      value={user.password}
-                      onChange={handleInputChange}
+                      value={password}
+                      onChange={(e)=>setPassword(e.target.value)}
+
                     />
                   </td>
                 </tr>

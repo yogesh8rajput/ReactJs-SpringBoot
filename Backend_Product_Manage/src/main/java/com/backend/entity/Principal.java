@@ -33,21 +33,21 @@ public class Principal implements UserDetails {
     
     @Override
     public boolean isAccountNonExpired() {
-        return true; // You can add logic here for expiration check if needed.
+        return UserDetails.super.isAccountNonExpired(); // You can add logic here for expiration check if needed.
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true; // Add lock status check if necessary.
+        return UserDetails.super.isAccountNonLocked(); // Add lock status check if necessary.
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // Add logic for expired credentials if needed.
+        return UserDetails.super.isCredentialsNonExpired(); // Add logic for expired credentials if needed.
     }
 
     @Override
     public boolean isEnabled() {
-        return true; // Add actual logic for account enabled check if needed.
+        return UserDetails.super.isEnabled(); // Add actual logic for account enabled check if needed.
     }
 }

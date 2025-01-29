@@ -5,6 +5,8 @@ package com.backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,7 +69,7 @@ public class UserControl {
 //	--------------------Login of User--------------------
 
 	@PostMapping("/login")
-	public String login(@RequestBody LoginRequest loginRequest , HttpSession session) {
+	public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest , HttpSession session) {
 		
 		try {
 			
@@ -75,17 +77,17 @@ public class UserControl {
 			
 			if(isauthenticated) {
 				session.setAttribute("user", loginRequest.getUsername());
-				return "Login Success";
+				return ResponseEntity.ok("Login Successful!");
 			}
 			else {
-				return "Invalid password";
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid name or password");
+
 			}
 		} 
 			catch (Exception e) {
 
-//			System.out.println(e.getMessage());
-		return e.getMessage();
-		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occured");
+}
 	}
 	
 }

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../axiosConfig";
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import Filter from "./Filter";
@@ -9,14 +9,16 @@ const Home = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      try {
-        const response = await axios.get("http://localhost:8090/products");
-        setproducts(response.data);
-        // console.log(response.data);
-      } catch (error) {
-        console.log("error" + error);
-        setiserror(true);
-      }
+      // try {
+        
+        axiosInstance.get("http://localhost:8090/products").then(response=>{
+          setproducts(response.data);
+console.log("Loading")
+
+        }). catch( (error)=> {
+        console.log(error);
+        // setiserror(true);
+      })
     };
 
     fetchdata();
