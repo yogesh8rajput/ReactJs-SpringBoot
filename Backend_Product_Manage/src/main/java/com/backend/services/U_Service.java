@@ -64,9 +64,9 @@ public class U_Service {
 			throw new UsernameNotFoundException("User doesn't exist in the database");
 		}
 		
-		if(!bCryptPasswordEncoder.matches(password, user.getPasswordhash())) {
-			throw new BadCredentialsException("Password is incorrect");
-		}
+		if (!bCryptPasswordEncoder.matches(password, user.getPasswordhash())) {
+            throw  new BadCredentialsException("The password is incorrect");
+        }
 		
 		return true;
 	}

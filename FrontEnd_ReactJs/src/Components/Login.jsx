@@ -24,7 +24,7 @@ const Login = () => {
         try {
             axios.post("http://localhost:8090/user/login", user).then((response) => {
                 // console.log(response.data)
-             if(response.ok){
+            //  if(response.ok){
                 setmsg("User Login Successfully!");
         
                 setUser({
@@ -33,10 +33,8 @@ const Login = () => {
                  
                 });
                 console.log("Logged in")
-            }
-            else{
-                console.log("Somethig went wrong")
-            }
+            // }
+            
             });
         } catch (error) {
             setmsg("Unable to Login User.");
