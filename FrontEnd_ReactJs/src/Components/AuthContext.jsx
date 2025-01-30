@@ -7,25 +7,55 @@ export const useAuth = ()=> useContext(AuthContext)
 
 export const AuthProvider= ({children}) =>{
 
-    const [isauthenticated, setIsAuthenticated] = useState(()=>{
-        return localStorage.getItem("isauthenticated") === "true"
+    const [isAuthenticated, setIsAuthenticated] = useState(()=>{
+        return localStorage.getItem("isAuthenticated") === "true"
     })
 
 const login=()=>{
     setIsAuthenticated(true)
-    localStorage.setItem("isauthenticated",true)
+    localStorage.setItem("isAuthenticated",true)
+    console.log(isAuthenticated, "in")
 }
 const logout=()=>{
     setIsAuthenticated(false)
-    localStorage.setItem("isauthenticated",false)
+    console.log(isAuthenticated,"out")
+
+    localStorage.setItem("isAuthenticated",false)
 }
 
 return (
 
-    <AuthContext.Provider value={{isauthenticated,login,logout}}>
+    <AuthContext.Provider value={{isAuthenticated,login,logout}}>
         {children}
     </AuthContext.Provider>
 )
 
 
 }
+
+
+// import React, { createContext, useState, useContext } from "react";
+
+// const AuthContext = createContext();
+
+// export const useAuth = () => {
+//   return useContext(AuthContext);
+// };
+
+// export const AuthProvider = ({ children }) => {
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+//   const login = () => {
+//     setIsAuthenticated(true);
+//   };
+
+//   const logout = () => {
+//     setIsAuthenticated(false);
+//   };
+
+//   return (
+//     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };

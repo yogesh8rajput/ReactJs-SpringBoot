@@ -10,9 +10,11 @@ import { useAuth } from "./AuthContext";
 const Navbar = ()=>{
    
 
-    
+        // const { logout = () => {} } = useAuth();
         const {logout} = useAuth();
-const navigate = useNavigate();
+
+        
+        const navigate = useNavigate();
         const logoutUser = ()=> {
             logout();
 navigate("/register");
