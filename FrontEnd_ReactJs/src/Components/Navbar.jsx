@@ -1,14 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearchengin } from "react-icons/fa6";
 import { ImHome } from "react-icons/im";
 import { MdAddToPhotos } from "react-icons/md";
 import { FaSignInAlt } from "react-icons/fa";
 import { SiGnuprivacyguard } from "react-icons/si";
+import { useAuth } from "./AuthContext";
 
-class Navbar extends Component{
+const Navbar = ()=>{
+   
 
-    render(){
+        // const { logout = () => {} } = useAuth();
+        const {logout} = useAuth();
+
+        
+        const navigate = useNavigate();
+        const logoutUser = ()=> {
+            logout();
+navigate("/register");
+        }
         return(
         <>
         <div className='bg-gray-200 h-full p-4 flex justify-evenly'>
@@ -20,11 +30,15 @@ class Navbar extends Component{
     <li><Link to="/register" className="flex gap-1">SIGNUP <SiGnuprivacyguard className="text-2xl"/></Link></li>
     <li><Link to="/login" className="flex gap-1">LOGIN <FaSignInAlt className="text-2xl"/></Link></li>
     <li className="border-2 border-gray-500 p-2 rounded-xl"><Link to="/search" className="text-slate-600 flex gap-2 ">Search<FaSearchengin className="text-2xl text-black" /></Link></li>
+
+
+    <li><button onClick={logoutUser}>logout</button></li>
+
 </ul>
 </div>
         </>
         )
-    }
+    
 }
 
 export default Navbar;

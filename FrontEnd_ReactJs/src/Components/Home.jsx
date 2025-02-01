@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../axiosConfig";
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import Filter from "./Filter";
@@ -9,14 +9,16 @@ const Home = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      try {
-        const response = await axios.get("http://localhost:8090/products");
-        setproducts(response.data);
-        // console.log(response.data);
-      } catch (error) {
-        console.log("error" + error);
+      // try {
+        
+        axiosInstance.get("http://localhost:8090/products").then(response=>{
+          setproducts(response.data);
+console.log("Loading")
+
+        }). catch( (error)=> {
+        console.log(error);
         setiserror(true);
-      }
+      })
     };
 
     fetchdata();
@@ -28,7 +30,9 @@ const Home = () => {
         <div className=" grid place-items-center h-96">
           <p className="text-red-600 text-5xl">Something went wrong......</p>
           <p className="text-pink-950 text-2xl underline">
-            -----Start the Server Please----
+            -----Start the Server Please----{
+              iserror
+            }
           </p>
         </div>
       </>
@@ -39,17 +43,17 @@ const Home = () => {
     {/* <Filter/> */}
       <div className="cardbox flex flex-wrap bg-slate-900">
         {products.map((product, index) => (
-          <Link to={`products/${product.product_id}`} key={index}>
+          <Link to={`/products/${product.product_id}`} key={index}>
             <div
               className="card bg-slate-100 rounded p-6 m-5 place-items-center w-96"
               
             >
               <div className="">
-                <img
+                {/* <img
                   src={`data:image/jpg;base64,${product.image_data}`}
                   alt="Not Found"
                   className="h-64 object-cover"
-                />
+                /> */}
               </div>
               <h1 className="font-bold text-3xl">{product.product_name}</h1>
               <p className="p-2 text-purple-500 text-xl">

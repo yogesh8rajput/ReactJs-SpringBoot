@@ -33,9 +33,7 @@ public class U_Service {
 	}
 
 	public User add(User user)  {
-//		products.setImage_name(imageFile.getOriginalFilename());
-//		user.setImage_type(imageFile.getContentType());
-//		user.setImage_data(imageFile.getBytes());
+		user.setPasswordhash(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		return userRepository.save(user);
 	}
