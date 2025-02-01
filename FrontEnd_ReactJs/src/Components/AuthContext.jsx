@@ -13,14 +13,14 @@ export const AuthProvider= ({children}) =>{
 
 const login=()=>{
     setIsAuthenticated(true)
-    localStorage.setItem("isAuthenticated",true)
+    localStorage.setItem("isAuthenticated","true")
     console.log(isAuthenticated, "in")
 }
 const logout=()=>{
     setIsAuthenticated(false)
     console.log(isAuthenticated,"out")
 
-    localStorage.setItem("isAuthenticated",false)
+    localStorage.setItem("isAuthenticated","false")
 }
 
 return (
