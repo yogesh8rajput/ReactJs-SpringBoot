@@ -49,11 +49,11 @@ console.log("Loading")
               
             >
               <div className="">
-                {/* <img
+                <img
                   src={`data:image/jpg;base64,${product.image_data}`}
                   alt="Not Found"
                   className="h-64 object-cover"
-                /> */}
+                />
               </div>
               <h1 className="font-bold text-3xl">{product.product_name}</h1>
               <p className="p-2 text-purple-500 text-xl">
