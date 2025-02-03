@@ -55,7 +55,7 @@ const UpdateProduct = () => {
       );
       console.log("Product updated successfully:", response.data);
       setMsg("Product updated successfully!");
-      navigate("/products");
+      navigate(`/products/${product_id}`);
     } catch (error) {
       console.error("Error updating product", error);
       alert("Error updating product.");

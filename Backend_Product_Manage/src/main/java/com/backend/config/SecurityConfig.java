@@ -40,7 +40,8 @@ public class SecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 				.cors(org.springframework.security.config.Customizer.withDefaults())
 				.authorizeHttpRequests(auth -> auth
-//						.requestMatchers("/products").permitAll()
+						.requestMatchers("/products/{product_id}").permitAll()
+						.requestMatchers("/products/{product_id}/image").permitAll()
 						.requestMatchers("/user/login").permitAll()
 						.requestMatchers("/user/register").permitAll().anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())
@@ -55,7 +56,7 @@ public class SecurityConfig {
 	public AuthenticationProvider authenticationProvider()
 	{
 		DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
-		provider.setPasswordEncoder(bCryptPasswordEncoder());
+		provider.setPasswordEncoder(new BCryptPasswordEncoder());
 		provider.setUserDetailsService(userDetailsService);
 		return provider;
 	}
@@ -73,9 +74,5 @@ public class SecurityConfig {
 		return (CorsConfigurationSource) source;
 	}
 	
-	
-	@Bean
-	public UserDetailsService userDetailsService2{
-		return new InMemoryUserDetailsManager()
-	}
+
 }
