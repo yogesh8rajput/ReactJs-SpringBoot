@@ -7,21 +7,22 @@ export const useAuth = ()=> useContext(AuthContext)
 
 export const AuthProvider= ({children}) =>{
 
-    const [isAuthenticated, setIsAuthenticated] = useState(()=>{
-        return localStorage.getItem("isAuthenticated") === "true"
-    })
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        return localStorage.getItem("isAuthenticated") === "true";
+      });
 
-const login=()=>{
-    setIsAuthenticated(true)
-    localStorage.setItem("isAuthenticated","true")
-    console.log(isAuthenticated, "in")
-}
-const logout=()=>{
-    setIsAuthenticated(false)
-    console.log(isAuthenticated,"out")
-
-    localStorage.setItem("isAuthenticated","false")
-}
+    const login = () => {
+        setIsAuthenticated(true);
+        localStorage.setItem("isAuthenticated", "true"); 
+        console.log("Logged In", true);
+     }
+     
+     const logout = () => {
+        setIsAuthenticated(false);
+        localStorage.setItem("isAuthenticated", "false");
+        console.log("Logged Out", false);
+     }
+     
 
 return (
 

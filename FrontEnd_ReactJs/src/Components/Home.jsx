@@ -3,11 +3,20 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import Filter from "./Filter";
 
+
+
 const Home = () => {
   const [products, setproducts] = useState([]);
   const [iserror, setiserror] = useState(false);
+    const {isAuthenticated} = useAuth();
+
+if(isAuthenticated === "true")
+
 
   useEffect(() => {
+
+
+
     const fetchdata = async () => {
       // try {
         
