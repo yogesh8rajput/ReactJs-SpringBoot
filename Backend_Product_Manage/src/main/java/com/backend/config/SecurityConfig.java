@@ -22,7 +22,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class SecurityConfig {
 
-<<<<<<< HEAD
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -66,56 +66,17 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-=======
-	@Autowired
-	private UserDetailsService userDetailsService;
-	
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity https) throws Exception
-	{
-		return https
-				.csrf(AbstractHttpConfigurer::disable)
-				.cors(org.springframework.security.config.Customizer.withDefaults())
-				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/products/{product_id}").permitAll()
-						.requestMatchers("/products/{product_id}/image").permitAll()
-						.requestMatchers("/user/login").permitAll()
-						.requestMatchers("/user/register").permitAll().anyRequest().authenticated())
-				.httpBasic(Customizer.withDefaults())
-				.build();
-				
-	}
-			
+
 	
 	
 	
-	@Bean
-	public AuthenticationProvider authenticationProvider()
-	{
-		DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
-		provider.setPasswordEncoder(new BCryptPasswordEncoder());
-		provider.setUserDetailsService(userDetailsService);
-		return provider;
-	}
 	
-	
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(List.of("http://localhost:5173"));
-		configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
-		configuration.setAllowCredentials(true);
-		configuration.addAllowedHeader("*");
-		UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**",configuration);
-		return (CorsConfigurationSource) source;
-	}
 	
 
->>>>>>> e21314472c081328bac9000f35fc2bd93bae82ee
+	
+	
+	
+	
+
+
 }
