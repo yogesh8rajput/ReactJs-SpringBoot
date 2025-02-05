@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,6 +28,11 @@ public class U_Service {
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired
 	private UserRepository userRepository;
+	
+//	<!--==============================================================-->
+	@Autowired
+	AuthenticationManager authenticationManager;
+//	<!--==============================================================-->
 	
 	
 	public U_Service(UserRepository userRepository,BCryptPasswordEncoder bCryptPasswordEncoder, BCryptPasswordEncoder bCryptPasswordEncoder1) {
@@ -68,5 +76,20 @@ public class U_Service {
 		
 		return true;
 	}
+	
+//	<!--==============================================================-->
+	
+//	<!--=============================with jwt =================================-->
+	
+	public String verify(User user) {
+		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+		if(authentication.isAuthenticated()){
+			return "Success";
+		}
+		return "fail";
+	}
+	
+//	<!--==============================================================-->
+	
 
 }

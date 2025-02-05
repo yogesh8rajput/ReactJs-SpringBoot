@@ -1,6 +1,7 @@
 import axiosInstance from "../axiosConfig";
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 // import Filter from "./Filter";
 
 
@@ -10,7 +11,7 @@ const Home = () => {
   const [iserror, setiserror] = useState(false);
     const {isAuthenticated} = useAuth();
 
-if(isAuthenticated === "true")
+// if(isAuthenticated === "true")
 
 
   useEffect(() => {
