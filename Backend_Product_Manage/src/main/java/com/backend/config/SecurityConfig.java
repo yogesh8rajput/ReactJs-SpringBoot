@@ -44,7 +44,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/products/{product_id}").permitAll()
 						.requestMatchers("/products/{product_id}/image").permitAll()
-						.requestMatchers("/user/login").permitAll()
+						.requestMatchers("/user/login2").permitAll()
 						.requestMatchers("/user/register").permitAll().anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())
 				.build();

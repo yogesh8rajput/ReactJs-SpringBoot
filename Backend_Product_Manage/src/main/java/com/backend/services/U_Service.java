@@ -29,9 +29,13 @@ public class U_Service {
 	@Autowired
 	private UserRepository userRepository;
 	
-//	<!--==============================================================-->
+//	<!--================================jwt==============================-->
 	@Autowired
 	AuthenticationManager authenticationManager;
+	
+	@Autowired
+	JWTservice jwTservice;
+	
 //	<!--==============================================================-->
 	
 	
@@ -63,20 +67,20 @@ public class U_Service {
 	
 //	-------------------------For Login Authentication-------------------------------------
 	
-	public boolean authenticate(String username,String password) {
-		User user = userRepository.findByUsername(username);
-		
-		if(!user.getUsername().equals(username)) {
-			throw new UsernameNotFoundException("User doesn't exist in the database");
-		}
-		
-		if (!bCryptPasswordEncoder.matches(password, user.getPasswordhash())) {
-            throw  new BadCredentialsException("The password is incorrect");
-        }
-		
-		return true;
-	}
-	
+//	public boolean authenticate(String username,String password) {
+//		User user = userRepository.findByUsername(username);
+//		
+//		if(!user.getUsername().equals(username)) {
+//			throw new UsernameNotFoundException("User doesn't exist in the database");
+//		}
+//		
+//		if (!bCryptPasswordEncoder.matches(password, user.getPasswordhash())) {
+//            throw  new BadCredentialsException("The password is incorrect");
+//        }
+//		
+//		return true;
+//	}
+//	
 //	<!--==============================================================-->
 	
 //	<!--=============================with jwt =================================-->
@@ -84,7 +88,7 @@ public class U_Service {
 	public String verify(User user) {
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 		if(authentication.isAuthenticated()){
-			return "Success";
+			return jwTservice.generateTokens(user.getUsername());
 		}
 		return "fail";
 	}

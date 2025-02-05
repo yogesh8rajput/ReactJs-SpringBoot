@@ -21,19 +21,21 @@ const logData={
   username,password
 }
         try {
-            const response = await axios.post("http://localhost:8090/user/login", logData);
-               console.log(response)
+            const response = await axios.post("http://localhost:8090/user/login2", logData);
+              //  console.log(response)
              if (response.status === 200){
               // console.log("Login success")
 login();
               navigate("/")
              }
-             else{
-              console.log("login failed")
-             }
+            //  else{
+            //   console.log("login failed")
+            //  }
         } catch (error) {
 console.log("An error occured" ,error)
         }
+
+        // document.write(error);
       }
 
 
@@ -45,6 +47,7 @@ console.log("An error occured" ,error)
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">
             Login
           </h1>
+          
           {/* {msg && <p className="text-green-700 font-semibold text-xl text-center m-5">{msg}</p>} */}
           <form className="flex flex-col gap-3" onSubmit={UserLogin} >
             <table className="w-auto border-collapse">

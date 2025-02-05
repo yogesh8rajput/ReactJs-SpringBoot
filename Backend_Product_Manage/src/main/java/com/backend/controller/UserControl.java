@@ -69,28 +69,28 @@ public class UserControl {
 	
 //	--------------------Login of User--------------------
 
-	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest , HttpSession session) {
-		
-		try {
-			
-			boolean isauthenticated = u_Service.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
-			
-			if(isauthenticated) {
-				session.setAttribute("user", loginRequest.getUsername());
-				return ResponseEntity.ok("Login Successful!");
-			}
-			else {
-				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid name or password");
-
-			}
-		} 
-			catch (Exception e) {
-
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occured");
-}
-	}
-	
+//	@PostMapping("/login")
+//	public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest , HttpSession session) {
+//		
+//		try {
+//			
+//			boolean isauthenticated = u_Service.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
+//			
+//			if(isauthenticated) {
+//				session.setAttribute("user", loginRequest.getUsername());
+//				return ResponseEntity.ok("Login Successful!");
+//			}
+//			else {
+//				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid name or password");
+//
+//			}
+//		} 
+//			catch (Exception e) {
+//
+//		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occured");
+//}
+//	}
+//	
 	
 	
 //	<!--=====================jwt========================================-->
