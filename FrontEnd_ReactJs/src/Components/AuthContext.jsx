@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -14,13 +15,16 @@ export const AuthProvider= ({children}) =>{
     const login = () => {
         setIsAuthenticated(true);
         localStorage.setItem("isAuthenticated", "true"); 
-        console.log("Logged In", true);
+        
+toast.success('Login success!');
      }
      
      const logout = () => {
         setIsAuthenticated(false);
         localStorage.setItem("isAuthenticated", "false");
-        console.log("Logged Out", false);
+       
+toast.warning('Logged Out!');
+
      }
      
 

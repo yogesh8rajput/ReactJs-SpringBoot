@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
+import { Flip, toast } from "react-toastify";
 
 const Login = () => {
 
@@ -26,13 +27,16 @@ const logData={
              if (response.status === 200){
               // console.log("Login success")
 login();
+
               navigate("/")
+
              }
             //  else{
             //   console.log("login failed")
             //  }
         } catch (error) {
 console.log("An error occured" ,error)
+toast.error('Unauthorized');
         }
 
         // document.write(error);

@@ -6,17 +6,14 @@ import { useAuth } from "./AuthContext";
 
 const Home = () => {
   const [products, setproducts] = useState([]);
-<<<<<<< HEAD
   const [iserror, setiserror] = useState(false);
     const {isAuthenticated} = useAuth();
 
 // if(isAuthenticated === "true")
 
-=======
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // Track loading state
-  const { isAuthenticated } = useAuth();
->>>>>>> 9ff2cc00ca27d4a92f981f57e31c321535509811
+  // const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
