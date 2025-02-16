@@ -17,6 +17,9 @@ This project is a Product Management System built with ReactJS for the front end
 - <b>Axios:</b> Promise-based HTTP client to make API requests.
 - <b>React Router:</b> For handling navigation and routing within the React app(react-router-dom).
 - <b>Tailwind CSS:</b> A utility-first CSS framework for building modern, responsive UIs.
+
+
+
 <h3>Backend</h3>
 
 
@@ -28,5 +31,5 @@ This project is a Product Management System built with ReactJS for the front end
 <h3>Tools</h3>
 
 - <b>Maven: </b>For managing backend dependencies and building the Spring Boot application.
-- <b>Node.js & npm:</b> For managing frontend dependencies and running the React app.
+- <b>Node.js & npm:</b> For managing frontend dependencies and running the React app(latest- Vite / bun).
 - <b>Postman:</b> For testing the backend API.
