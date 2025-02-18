@@ -48,16 +48,11 @@ const Navbar = () => {
               <FaSearchengin className="text-2xl text-black" />
             </Link>
           </li>
-
-          {isAuthenticated ? (
-            <li>
-              <button onClick={logoutUser}>hello</button>
-            </li>
-          ) : (
             <li>
               <button onClick={logoutUser}>logout</button>
             </li>
-          )}
+
+         
         </ul>
       </div>
     </>

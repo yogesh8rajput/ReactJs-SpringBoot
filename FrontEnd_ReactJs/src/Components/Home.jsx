@@ -68,7 +68,7 @@ const Home = () => {
       <div className="cardbox flex flex-wrap bg-slate-900">
         {products.map((product, index) => (
           <Link to={`/products/${product.product_id}`} key={index}>
-            <div className="card bg-slate-100 rounded p-6 m-5 place-items-center w-96">
+            <div className="card bg-slate-100 rounded p-2 m-5 place-items-center ">
               <div className="">
                 <img
                   src={`data:image/jpg;base64,${product.image_data}`}
@@ -99,9 +99,7 @@ const Home = () => {
                         to="/oneproduct"
                         className="bg-blue-500 text-white p-2 rounded font-bold"
                       >
-                        {product.product_status === 1
-                          ? "Add to Cart"
-                          : "Out of Stock"}
+                       View
                       </Link>
                     </td>
                   </tr>
