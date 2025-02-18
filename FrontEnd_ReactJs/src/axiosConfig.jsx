@@ -16,8 +16,8 @@ import axios from "axios";
     (config) => {
         const configs = {
             API_URL: 'http://localhost:8090',
-            API_USERNAME: 'aa',
-            API_PASSWORD: '12',
+            API_USERNAME: 'Ayush@',
+            API_PASSWORD: '1234',
           };
       config.auth = {
         username: configs.API_USERNAME,

@@ -30,7 +30,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin("http://localhost:5174")
 public class ProductControl {
 
 	
