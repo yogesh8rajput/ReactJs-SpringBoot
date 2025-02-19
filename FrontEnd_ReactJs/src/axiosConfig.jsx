@@ -15,9 +15,9 @@ import axios from "axios";
   axiosInstance.interceptors.request.use(
     (config) => {
         const configs = {
-            API_URL: 'http://localhost:8090',
-            API_USERNAME: 'Ayush@',
-            API_PASSWORD: '1234',
+            API_URL: 'http://localhost:8090/',
+            API_USERNAME: 'yudi',
+            API_PASSWORD: 'mouse8',
           };
       config.auth = {
         username: configs.API_USERNAME,
