@@ -4922,10 +4922,66 @@ Caused by: org.apache.maven.model.building.ModelBuildingException: 1 problem was
 2025-02-06 14:08:00,863 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-02-06 14:08:00,869 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-02-06 14:08:00,875 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
+<<<<<<< HEAD
+2025-02-18 22:19:22,092 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-02-18 22:20:15,224 [Worker-6: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.backend:Backend_Product_Manage:0.0.1-SNAPSHOT @ D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\pom.xml.
+2025-02-18 22:20:19,744 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.pom
+2025-02-18 22:20:19,782 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.pom
+2025-02-18 22:20:19,865 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-root/0.12.6/jjwt-root-0.12.6.pom
+2025-02-18 22:20:19,939 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-root/0.12.6/jjwt-root-0.12.6.pom
+2025-02-18 22:20:20,024 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.pom
+2025-02-18 22:20:20,055 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.pom
+2025-02-18 22:20:20,143 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.pom
+2025-02-18 22:20:20,183 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.pom
+2025-02-18 22:20:20,504 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.jar
+2025-02-18 22:20:20,662 [Worker-6: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.jar
+2025-02-18 22:20:20,744 [BasicRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.jar
+2025-02-18 22:20:20,910 [BasicRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.jar
+2025-02-18 22:20:20,913 [BasicRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.jar
+2025-02-18 22:20:21,252 [BasicRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.jar
+2025-02-18 22:20:26,866 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-18 22:20:26,882 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-18 22:20:26,889 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+2025-02-18 22:20:28,440 [Worker-9: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.backend:Backend_Product_Manage:0.0.1-SNAPSHOT @ D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\pom.xml.
+2025-02-18 22:20:28,583 [Worker-4: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6-sources.jar
+2025-02-18 22:20:28,932 [Worker-4: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6-sources.jar
+2025-02-18 22:20:28,940 [Worker-4: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.jsonwebtoken:jjwt-api:0.12.6
+2025-02-18 22:20:29,152 [Worker-4: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6-sources.jar
+2025-02-18 22:20:29,669 [Worker-4: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6-sources.jar
+2025-02-18 22:20:29,676 [Worker-4: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.jsonwebtoken:jjwt-impl:0.12.6
+2025-02-18 22:20:29,941 [Worker-4: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6-sources.jar
+2025-02-18 22:20:30,048 [Worker-4: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6-sources.jar
+2025-02-18 22:20:30,052 [Worker-4: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.jsonwebtoken:jjwt-jackson:0.12.6
+2025-02-18 22:20:31,508 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-18 22:20:31,535 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-18 22:20:31,542 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+2025-02-18 22:21:17,764 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-18 22:21:17,772 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-18 22:21:17,777 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+2025-02-18 22:25:35,248 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-02-18 22:26:09,200 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-18 22:26:09,242 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-18 22:26:09,263 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+2025-02-18 22:40:16,245 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-18 22:40:16,311 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-18 22:40:16,319 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+=======
 2025-02-18 22:28:25,611 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2025-02-18 22:28:37,987 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Updating Gradle version information cache failed. Using outdated cache.
+<<<<<<< HEAD
 2025-02-19 12:25:12,067 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2025-02-22 11:15:49,095 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2025-02-23 23:43:38,820 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2025-02-24 11:55:46,354 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2025-02-24 12:33:13,225 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+=======
+>>>>>>> acafb842ab6a4d76d573abe796f21a8706ad3235
+2025-02-18 22:49:55,803 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-02-18 22:50:40,255 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-18 22:50:40,279 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-18 22:50:40,284 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+2025-02-18 22:50:44,749 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-18 22:50:44,753 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-18 22:50:44,755 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+2025-02-19 12:18:50,277 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+>>>>>>> 6d712f21978f98f1a241100e31d32efc4dc23a8d
