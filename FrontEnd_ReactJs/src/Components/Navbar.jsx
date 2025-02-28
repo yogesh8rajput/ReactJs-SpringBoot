@@ -6,6 +6,8 @@ import { MdAddToPhotos } from "react-icons/md";
 import { FaSignInAlt } from "react-icons/fa";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { useAuth } from "./AuthContext";
+import { PiArrowFatLinesDownDuotone } from "react-icons/pi";
+import { BiLogOutCircle } from "react-icons/bi";
 
 const Navbar = () => {
   // const { logout = () => {} } = useAuth();
@@ -48,11 +50,12 @@ const Navbar = () => {
               <FaSearchengin className="text-2xl text-black" />
             </Link>
           </li>
-            <li>
-              <button onClick={logoutUser}>logout</button>
-            </li>
-
-         
+          <li>
+            <button onClick={logoutUser}>
+              logout
+              <BiLogOutCircle className="text-2xl text-black" />
+            </button>
+          </li>
         </ul>
       </div>
     </>
