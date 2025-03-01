@@ -31,15 +31,12 @@ login();
               navigate("/")
 
              }
-            //  else{
-            //   console.log("login failed")
-            //  }
+         
         } catch (error) {
 console.log("An error occured" ,error)
 toast.error('Unauthorized');
         }
 
-        // document.write(error);
       }
 
 
