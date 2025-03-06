@@ -23,9 +23,7 @@ const logData={
 }
         try {
             const response = await axios.post("http://localhost:8090/user/login2", logData);
-              //  console.log(response)
              if (response.status === 200){
-              // console.log("Login success")
 login();
 
               navigate("/")
