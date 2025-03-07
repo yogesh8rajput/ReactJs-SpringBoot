@@ -93,7 +93,7 @@ public class UserControl {
 //	
 	
 	
-//	<!--=====================jwt========================================-->
+//	<!--=====================JWT========================================-->
 	
 	@PostMapping("/login2")
 	public String verify(@RequestBody User user) {
