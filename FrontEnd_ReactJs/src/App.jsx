@@ -5,7 +5,6 @@ import Navbar from "./Components/Navbar";
 import Product from "./Components/Product";
 import AddProduct from "./Components/AddProduct";
 import UpdateProduct from "./Components/UpdateProduct";
-// import Search from "./Components/Search";
 import Filter from "./Components/Filter";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
