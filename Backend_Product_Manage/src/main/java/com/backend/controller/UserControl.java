@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.backend.entity.LoginRequest;
 //import com.backend.entity.Products;
 import com.backend.entity.User;
+import com.backend.repositories.UserRepository;
 //import com.backend.services.P_Services;
 import com.backend.services.U_Service;
 
@@ -28,11 +30,15 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("http://localhost:5173")
 public class UserControl {
 
 	
 	@Autowired
 	private U_Service u_Service;
+	@Autowired
+	private UserRepository userRepository;
+	
 	
 	public UserControl(U_Service u_Service) {
 		this.u_Service = u_Service;
@@ -66,6 +72,14 @@ public class UserControl {
 		 u_Service.delete(id);
 	}
 
+
+//	------------------------Fetch the user count-------------------------------------
+
+	 @GetMapping("/count")
+	    public long getUserCount() {
+	        return userRepository.count();
+	    }
+	
 	
 //	--------------------Login of User--------------------
 
