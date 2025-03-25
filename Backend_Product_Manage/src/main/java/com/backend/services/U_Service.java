@@ -64,6 +64,11 @@ public class U_Service {
 	public void delete(Integer id) {
 		userRepository.deleteById(id);
 	}
+//	------------------------Fetch the user count-------------------------------------
+
+//	 public long getUserCount() {
+//	        return userRepository.count();
+//	    }
 	
 //	-------------------------For Login Authentication-------------------------------------
 	
