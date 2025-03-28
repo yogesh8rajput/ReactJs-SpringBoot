@@ -1,10 +1,4 @@
 import axios from "axios";
-
-// const config = {
-//     API_URL: 'http://localhost:8090/pr',
-//     API_USERNAME: 'aa',
-//     API_PASSWORD: '12',
-//   };
   
   const axiosInstance = axios.create({
     headers: {
@@ -16,8 +10,8 @@ import axios from "axios";
     (config) => {
         const configs = {
             API_URL: 'http://localhost:8090/',
-            API_USERNAME: 'aa',
-            API_PASSWORD: '12',
+            API_USERNAME: 'hello',
+            API_PASSWORD: 'hello',
           };
       config.auth = {
         username: configs.API_USERNAME,

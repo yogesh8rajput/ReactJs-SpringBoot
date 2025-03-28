@@ -5016,6 +5016,7 @@ Caused by: org.apache.maven.model.building.ModelBuildingException: 1 problem was
 2025-03-23 19:17:35,703 [Worker-45: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-03-23 19:17:35,712 [Worker-45: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-03-23 19:17:35,720 [Worker-45: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
+<<<<<<< HEAD
 >>>>>>> 90f6679bec57dcf59bd0c3751afd778c6d394592
 2025-03-25 14:19:25,079 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2025-03-25 14:20:12,955 [Worker-1: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.backend:Backend_Product_Manage:0.0.1-SNAPSHOT @ D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\pom.xml.
@@ -5026,3 +5027,14 @@ Caused by: org.apache.maven.model.building.ModelBuildingException: 1 problem was
 2025-03-27 12:32:37,759 [Worker-6: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-03-27 12:32:37,778 [Worker-6: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-03-27 12:32:37,785 [Worker-6: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+=======
+2025-03-26 23:19:36,722 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-03-26 23:26:48,254 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-03-26 23:27:38,859 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-26 23:27:38,897 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-26 23:27:38,904 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
+>>>>>>> 56adde2f1ba595156137af173e8ef9f6829a0738
+2025-03-27 21:53:50,608 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-03-27 22:01:36,989 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-27 22:01:37,018 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-27 22:01:37,025 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
