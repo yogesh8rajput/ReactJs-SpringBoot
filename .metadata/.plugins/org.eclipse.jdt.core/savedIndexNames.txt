@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.134+E:\2.2Product Manage\.metadata\.plugins\org.eclipse.jdt.core
 2451007114.index
 829833450.index
@@ -111,3 +112,8 @@ INDEX VERSION 1.134+E:\2.2Product Manage\.metadata\.plugins\org.eclipse.jdt.core
 3241271890.index
 4228299668.index
 560521105.index
+=======
+INDEX VERSION 1.134+D:\Project_2k25\ReactJs-SpringBoot\.metadata\.plugins\org.eclipse.jdt.core
+1948969981.index
+3413270776.index
+>>>>>>> c24db44a00d9713dc71f094805c9d284bcdbdc2e
