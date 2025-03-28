@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import { Flip, toast } from "react-toastify";
+import Navbar from "./Navbar";
 
 const Login = () => {
 
@@ -26,7 +27,7 @@ const logData={
              if (response.status === 200){
 login();
 
-              navigate("/")
+              navigate("/start")
 
              }
          
@@ -41,6 +42,7 @@ toast.error('Unauthorized');
 
   return (
     <>
+    <Navbar/>
       <div className="w-screen p-5">
         <div className="bg-gray-200 p-5 w-fit place-self-center ">
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from "./Navbar";
 
 const Search = ({searchResult}) => {
   const [search, setSearch] = useState("");
@@ -33,13 +34,14 @@ const Search = ({searchResult}) => {
   return (
     <>
       <div>
-        <form className="px-32">
+    <Navbar/>
+        <form className="p-6 ">
           <input
             type="search"
             name="keyword"
             id=""
             placeholder="Search"
-            className="border-b-2 border-b-slate-400 rounded-3xl w-1/4 px-4 h-12"
+            className="border-b-2 border-b-slate-400 rounded-xl w-1/4 px-4 h-12"
             onChange={(e) => handleChange(e.target.value)}
           />
         </form>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import Navbar from "./Navbar";
 
 const Registration = () => {
   const [msg, setmsg] = useState();
@@ -45,6 +46,7 @@ const Registration = () => {
 
   return (
     <>
+    <Navbar/>
       <div className="w-screen p-5">
         <div className="bg-gray-200 p-5 w-fit place-self-center rounded-3xl">
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">

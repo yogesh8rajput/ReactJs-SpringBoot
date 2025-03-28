@@ -2,6 +2,7 @@ import axiosInstance from "../axiosConfig";
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
+import Navbar from "./Navbar";
 // import Filter from "./Filter";
 
 const Home = () => {
@@ -64,7 +65,7 @@ const Home = () => {
 
   return (
     <>
-      {/* <Filter/> */}
+      <Navbar/>
       <div className="cardbox flex flex-wrap bg-slate-900">
         {products.map((product, index) => (
           <Link to={`/products/${product.product_id}`} key={index}>

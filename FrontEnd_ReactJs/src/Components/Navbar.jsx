@@ -1,18 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaSearchengin } from "react-icons/fa6";
-import { ImHome } from "react-icons/im";
-import { MdAddToPhotos } from "react-icons/md";
-import { FaSignInAlt } from "react-icons/fa";
-import { SiGnuprivacyguard } from "react-icons/si";
 import { useAuth } from "./AuthContext";
-import { PiArrowFatLinesDownDuotone } from "react-icons/pi";
-import { BiLogOutCircle } from "react-icons/bi";
+import clientbridge from '../images/h.png';
+
 
 const Navbar = () => {
   // const { logout = () => {} } = useAuth();
   const { logout } = useAuth();
-  const isAuthenticated = useAuth();
+  // const isAuthenticated = useAuth();
 
   const navigate = useNavigate();
   const logoutUser = () => {
@@ -21,43 +16,53 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="bg-gray-200 h-full p-4 flex justify-evenly">
-        <div className="text-5xl">Products</div>
-        <ul className="flex gap-4 items-center ">
-          <li>
-            <Link to="/" className="flex gap-1">
-              HOME <ImHome className="text-2xl" />
+
+    {/* Navbar */}
+          <nav className="bg-gray-200 p-4 shadow-lg ">
+            <div className="max-w-screen-xl mx-auto flex justify-between items-center">
+              <div><img src={clientbridge} alt="CRM Hero" width="200" className="bg-slate-900" /></div>
+              <ul className="flex space-x-6">
+              <li>
+            <Link to="/" >
+              HOME 
             </Link>
           </li>
           <li>
-            <Link to="/add" className="flex gap-1">
-              ADD <MdAddToPhotos className="text-2xl" />
+            <Link to="/add" >
+              ADD 
             </Link>
           </li>
           <li>
-            <Link to="/register" className="flex gap-1">
-              SIGNUP <SiGnuprivacyguard className="text-2xl" />
+            <Link to="/register" >
+              SIGNUP 
             </Link>
           </li>
           <li>
-            <Link to="/login" className="flex gap-1">
-              LOGIN <FaSignInAlt className="text-2xl" />
+            <Link to="/login" >
+              LOGIN 
             </Link>
           </li>
-          <li className="border-2 border-gray-500 p-2 rounded-xl">
-            <Link to="/search" className="text-slate-600 flex gap-2 ">
+          <li>
+            <Link to="/start" >
+              Products 
+            </Link>
+          </li>
+          <li className="border-2 border-gray-500 px-4 rounded-xl">
+            <Link to="/search" >
               Search
-              <FaSearchengin className="text-2xl text-black" />
+              
             </Link>
           </li>
           <li>
             <button onClick={logoutUser}>
               logout
-              <BiLogOutCircle className="text-2xl text-black" />
+             
             </button>
           </li>
-        </ul>
-      </div>
+              </ul>
+            </div>
+          </nav>
+
     </>
   );
 };
