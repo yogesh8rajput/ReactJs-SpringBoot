@@ -5038,3 +5038,4 @@ Caused by: org.apache.maven.model.building.ModelBuildingException: 1 problem was
 2025-03-27 22:01:36,989 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-03-27 22:01:37,018 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-03-27 22:01:37,025 [Worker-3: Launching Backend_Product_Manage - BackendProductManageApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Project_2k25\ReactJs-SpringBoot\Backend_Product_Manage\src\test\resources
+2025-03-28 11:26:59,949 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
