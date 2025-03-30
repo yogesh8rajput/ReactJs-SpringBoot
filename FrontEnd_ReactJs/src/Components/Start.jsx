@@ -12,7 +12,7 @@ function Start() {
       <nav className="bg-slate-900 text-white p-4 shadow-lg ">
         <div className="max-w-screen-xl mx-auto flex justify-between items-center">
           <div><img src={clientbridge} alt="CRM Hero" width="200" /></div>
-          <ul className="flex space-x-6">
+          <ul className="flex space-x-6 ">
             {/* <li><a href="#home" className="hover:text-yellow-400 transition">Home</a></li> */}
             <li><a href="#services" className="hover:text-yellow-400 transition">Services</a></li>
             <li><a href="#features" className="hover:text-yellow-400 transition">Features</a></li>
@@ -31,7 +31,7 @@ function Start() {
             <button className="bg-yellow-400 text-black py-2 px-6 rounded-full text-xl hover:bg-yellow-500 transition duration-300">Get Started</button>
           </div>
           <div>
-            <img src={heroImage} alt="CRM Hero" width="1300"/>
+            <img src={heroImage} alt="CRM Hero" width="1300" className=''/>
           </div>
         </div>
       </section>
