@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Components/Home";
-import Navbar from "./Components/Navbar";
+// import Navbar from "./Components/Navbar";
 import Product from "./Components/Product";
 import AddProduct from "./Components/AddProduct";
 import UpdateProduct from "./Components/UpdateProduct";
@@ -19,10 +19,11 @@ function App() {
   return (
     <div>
     <AuthProvider>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Start />} />
+        <Route path="/start" element={<Home />} />
         <Route
           path="/products/:product_id"
           element={
@@ -31,15 +32,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+          <Route path="/add" element={<AddProduct />} />
         <Route path="products/update/:product_id" element={<UpdateProduct />} />
-        <Route path="/add" element={<AddProduct />} />
         <Route path="/search" element={<Filter />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/users" element={<UserCount />} />
         <Route path="/reports" element={<UserGraph />} />
-        <Route path="/start" element={<Start />} />
       </Routes>
     </AuthProvider>
 

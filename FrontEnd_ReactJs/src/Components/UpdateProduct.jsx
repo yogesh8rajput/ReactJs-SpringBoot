@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const UpdateProduct = () => {
   const { product_id } = useParams();
@@ -64,6 +65,7 @@ const UpdateProduct = () => {
 
   return (
     <>
+    <Navbar/>
       <div className="bg-slate-500 p-5">
         <div className="bg-gray-200 p-5 w-fit place-self-center rounded-3xl">
           <h1 className="lg:text-5xl lg:font-normal text-3xl font-extrabold text-center">

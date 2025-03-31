@@ -100,12 +100,22 @@
 </dependency>
 
 <!--==============================================================-->
+<<<<<<< HEAD
 <dependency>
+=======
+<!--Swager UI-->
+	<dependency>
+>>>>>>> b52f4d98ae0a94fc60e98d6c024cf723b0bf2e9a
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
       <version>2.8.6</version>
    </dependency>
+<<<<<<< HEAD
 		
+=======
+<!--==============================================================-->
+
+>>>>>>> b52f4d98ae0a94fc60e98d6c024cf723b0bf2e9a
 	</dependencies>
 
 	<build>
