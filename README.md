@@ -1,4 +1,4 @@
-<h1>Product Management System</h1>
+<h1>PRODUCT MANAGEMENT SYSTEM</h1>
 (React + Spring Boot + API)
 <hr>
 This project is a Product management system built with ReactJS for the front end and Spring Boot for the backend. It allows users to manage product information such as creating, updating, deleting, and viewing products. The system is designed with scalability and usability in mind.
