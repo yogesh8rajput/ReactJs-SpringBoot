@@ -3,7 +3,7 @@
 (React + Spring Boot + API)
 <hr>
 This project is a Product management system built with ReactJS for the front end and Spring Boot for the backend. It allows users to manage product information such as creating, updating, deleting, and viewing products. The system is designed with scalability and usability in mind.
-
+<hr>
 <h2>Features</h2>
 
   - <b>Product Listing:</b> Displays a list of all products with details such as name, description, price, and stock status.
@@ -11,6 +11,7 @@ This project is a Product management system built with ReactJS for the front end
   - <b>Update Product:</b> Enables modifying the details of an existing product.
   - <b>Delete Product:</b> Allows deleting products from the system.
   -<b>Search Products:</b> Allows users to search and filter products based on different criteria.
+<hr>
 <h2>Tech Stack</h2>
 <h3>Frontend</h3>
 
@@ -30,6 +31,7 @@ This project is a Product management system built with ReactJS for the front end
 - <b>Spring Data JPA: </b>Simplifies database interactions and allows object-relational mapping with Hibernate.
 - <b>MySQL: </b>A relational database management system for storing product data.
 - <b>Hibernate:</b> ORM framework to handle database interactions seamlessly with Spring Data JPA.
+<hr>
 <h3>Tools</h3>
 
 - <b>Maven: </b>For managing backend dependencies and building the Spring Boot application.
