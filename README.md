@@ -1,4 +1,4 @@
-<h1>PRODUCT MANAGEMENT SYSTEM💻
+<h1>PRODUCT MANAGEMENT SYSTEM
 </h1>
 (React + Spring Boot + API)
 <hr>
