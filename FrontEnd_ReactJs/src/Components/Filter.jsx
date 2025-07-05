@@ -11,6 +11,7 @@ const [results,setresults] = useState([]);
       <Search searchResult={setresults} />
     </div>
     <div>
+      
         <SearchResult result={results}/>
     </div>
   </div>
