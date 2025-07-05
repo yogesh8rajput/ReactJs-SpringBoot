@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Simulate loading time of 1000 seconds (1000 * 1000 ms = 1000 seconds)
+        // ,,,Simulate loading time of 1000 seconds (1000 * 1000 ms = 1000 seconds)
         setTimeout(async () => {
           axiosInstance
             .get("http://localhost:8090/products")
