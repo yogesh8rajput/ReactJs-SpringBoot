@@ -8,16 +8,6 @@ import Sidebar from './Sidebar';
 const Dashboard = () => {
   const [userGrowthData, setUserGrowthData] = useState([30, 45, 55, 60, 70]);  // Initial sample data
 
-//   useEffect(() => {
-//     // Fetch user growth data from the API
-//     axios.get('https://api.example.com/users/growth')  // Replace with your API endpoint
-//       .then(response => {
-//         setUserGrowthData(response.data.growth);
-//       })
-//       .catch(error => {
-//         console.error('Error fetching user growth data', error);
-//       });
-//   }, []);
 
   return (
     <div className="flex flex-1 ">
