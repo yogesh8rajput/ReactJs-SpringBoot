@@ -84,11 +84,7 @@ const Home = () => {
 
               <table className="w-full m-4">
                 <tbody>
-                  {/* <tr>
-                    <td>Release Date</td>
-                    <td> {product.release_date}</td>
-                  </tr> */}
-
+                 
                   <tr>
                     <td>
                       <p className="p-2 font-bold font-mono text-lg text-green-400">
