@@ -9,18 +9,8 @@ const Search = ({searchResult}) => {
     fetch(`http://localhost:8090/products/search?keyword=${search}`).then(
       (response) =>
         response.json().then((json) =>
-          //  console.log(json)
       searchResult(json)
-          // {
-            // const results = json.filter((product) => {
-            //   return (
-            //     value &&
-            //     product &&
-            //     product.product_name.toLowerCase().includes(value)
-            //   );
-            // });
-            // console.log(results);
-          // }
+          
         )
     );
   };
