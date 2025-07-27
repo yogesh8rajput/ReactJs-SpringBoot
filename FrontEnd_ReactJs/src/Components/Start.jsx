@@ -105,33 +105,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+///////////////////dashboard
 
 import { useState, useEffect } from 'react';
 import { Bar, Line, Pie } from 'react-chartjs-2';
