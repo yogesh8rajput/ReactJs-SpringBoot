@@ -18,7 +18,8 @@ const Navbar = () => {
     <>
 
     {/* Navbar */}
-          <nav className="bg-gray-200 p-4 shadow-lg ">
+          <nav className="bg-slate-900 text-white p-4 shadow-lg ">
+          {/* <nav className="bg-gray-200 p-4 shadow-lg "> */}
             <div className="max-w-screen-xl mx-auto flex justify-between items-center">
               <div><img src={clientbridge} alt="CRM Hero" width="200" className="bg-slate-900" /></div>
               <ul className="flex space-x-6">
@@ -53,15 +54,27 @@ const Navbar = () => {
               
             </Link>
           </li>
-          <li>
+          {/* <li>
             <button onClick={logoutUser}>
               logout
              
             </button>
-          </li>
+          </li> */}
               </ul>
             </div>
-          </nav>
+          {/* </nav> */}
+
+                  {/* <div className="max-w-screen-xl mx-auto flex justify-between items-center"> */}
+                    {/* <div><img src={clientbridge} alt="CRM Hero" width="200" /></div> */}
+                    {/* <ul className="flex space-x-6 "> */}
+                      {/* <li><a href="#home" className="hover:text-yellow-400 transition">Home</a></li> */}
+                      {/* <li><a href="#services" className="hover:text-yellow-400 transition">Services</a></li> */}
+                      {/* <li><a href="#features" className="hover:text-yellow-400 transition">Features</a></li> */}
+                      {/* <li><a href="#contact" className="hover:text-yellow-400 transition">Contact</a></li> */}
+                      {/* <li><a href="/login" className="hover:text-yellow-400 transition">Login</a></li> */}
+                    {/* </ul> */}
+                  {/* </div> */}
+                </nav>
 
     </>
   );

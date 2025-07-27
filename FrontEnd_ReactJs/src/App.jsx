@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Components/Home";
-// import Navbar from "./Components/Navbar";
+import AdminPanel2 from "./Components/AdminPanel2";
 import Product from "./Components/Product";
 import AddProduct from "./Components/AddProduct";
 import UpdateProduct from "./Components/UpdateProduct";
@@ -37,6 +37,7 @@ function App() {
         <Route path="/search" element={<Filter />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin2" element={<AdminPanel2 />} />
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/users" element={<UserCount />} />
         <Route path="/reports" element={<UserGraph />} />

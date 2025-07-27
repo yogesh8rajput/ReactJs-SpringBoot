@@ -32,7 +32,7 @@ const Home = () => {
               setIsError(true);
               setIsLoading(false); // Set loading to false if there's an error
             });
-        }, 10); // Delay of 1000 seconds (1000 * 1000 ms)
+        }, 1000); // Delay of 1000 seconds (1000 * 1000 ms)
       } catch (error) {
         console.log(error);
         setIsError(true);
@@ -45,9 +45,9 @@ const Home = () => {
 
   if (isLoading) {
     return (
-      <div className="grid place-items-center h-96">
-        <p className="text-blue-500 text-4xl">Loading products...</p>
-        <p className="text-purple-500 text-2xl">Please wait for a moment.</p>
+      <div className="grid place-items-center h-screen">
+       
+       <div className="border-[20px] border-b-white border-t-gray-500 h-24 w-24 rounded-full animate-spin"></div>
       </div>
     );
   }
