@@ -82,6 +82,7 @@ function Start() {
   const [darkMode, setDarkMode] = useState(true);
   const [dashboardData, setDashboardData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userCount, setUserCount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -95,6 +96,15 @@ function Start() {
       }
     };
 
+     axios.get('http://localhost:8090/user/count') 
+      .then(response => {
+        setUserCount(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching user count', error);
+        setLoading(false);
+      });
     fetchData();
   }, []);
 
@@ -138,6 +148,20 @@ function Start() {
     ]
   };
 
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   // Fetch user count from the API
+  //   axios.get('http://localhost:8090/user/count') 
+  //     .then(response => {
+  //       setUserCount(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching user count', error);
+  //       setLoading(false);
+  //     });
+  // }, []);
   return (
     <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}>
       {/* Header */}
@@ -159,7 +183,7 @@ function Start() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatCard
             title="Total Users"
-            value={dashboardData.userCount}
+            value={userCount}
             // icon={<UsersIcon className="h-6 w-6" />}
             change="+12%"
             isIncrease={true}
