@@ -226,3 +226,6 @@ Binding(ALT+SHIFT+D R,
 
 !ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2025-08-05 21:58:14.991
 !MESSAGE The given URI http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_1.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-08-05 23:57:19.246
+!MESSAGE The workspace will exit with unsaved changes in this session.
