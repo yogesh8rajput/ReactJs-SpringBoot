@@ -1,4 +1,4 @@
-<h1>PRODUCT MANAGEMENT SYSTEM CRM conversation in progress 
+<h1>PRODUCT MANAGEMENT SYSTEM CRM conversation in progress with lots features
 </h1>
 (React + Spring Boot + API)
 <hr>
