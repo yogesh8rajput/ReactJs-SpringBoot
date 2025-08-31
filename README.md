@@ -1,5 +1,8 @@
-<h1>PRODUCT MANAGEMENT SYSTEM CRM conversation in progress with lots features admin panel dashboard 
+<h1>PRODUCT MANAGEMENT SYSTEM CRM
+  
+
 </h1>
+ ### conversation in progress with lots features admin panel dashboard 
 (React + Spring Boot + API)
 <hr>
 This project is a Product management system built with ReactJS for the front end and Spring Boot for the backend. It allows users to manage product information such as creating, updating, deleting, and viewing products. The system is designed with scalability and usability in mind.
