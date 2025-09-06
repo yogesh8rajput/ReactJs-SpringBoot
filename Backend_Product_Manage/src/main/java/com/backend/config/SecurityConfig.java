@@ -1,82 +1,42 @@
 package com.backend.config;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@Configuration
 @EnableWebSecurity
-@EnableWebMvc
 public class SecurityConfig {
-	
-//	public static final String[] PUBLIC_URLS = {"/v3/api-docs","/v3/api-docs","/swagger-resources/**", "/swagger-ui/**", "/webjars/**"};
-	
-	@Autowired
-	private UserDetailsService userDetailsService;
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity https) throws Exception
-	{
-		return https
-				.csrf(AbstractHttpConfigurer::disable)
-				.cors(org.springframework.security.config.Customizer.withDefaults())
-				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/products/{product_id}").permitAll()
-//						.requestMatchers(PUBLIC_URLS).permitAll()
-						.requestMatchers(HttpMethod.GET).permitAll()
-						.requestMatchers("/user/count").permitAll()
-						.requestMatchers("/products/{product_id}/image").permitAll()
-						.requestMatchers("/user/login2").permitAll()
-						.requestMatchers("/user/register").permitAll().anyRequest().authenticated())
-				.httpBasic(Customizer.withDefaults())
-				.build();
-				
-	}
+private final UserDetailsService userDetailsService = null;
 
-//	<!--============================JWT Token==================================-->
-	
-	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-		return config.getAuthenticationManager();
-	}
-	
-	
-//	<!--==============================================================-->
-	
-	
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(List.of("http://localhost:5173"));
-		configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
-		configuration.setAllowCredentials(true);
-		configuration.addAllowedHeader("*");
-		UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**",configuration);
-		return (CorsConfigurationSource) source;
-	}
-	
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .anyRequest().authenticated())
+                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(daoAuthProvider())
+//            .addFilterBefore(UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
 
+    @Bean
+    public DaoAuthenticationProvider daoAuthProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(new BCryptPasswordEncoder());
+        return provider;
+    }
+
+    @Bean
+    public AuthenticationManager authManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
 }
