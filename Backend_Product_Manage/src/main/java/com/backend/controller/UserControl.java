@@ -8,6 +8,7 @@ import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +17,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-//import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-//import org.springframework.web.multipart.MultipartFile;
 
+import com.backend.entity.AuthResponse;
 import com.backend.entity.LoginRequest;
-//import com.backend.entity.Products;
-import com.backend.entity.User;
+import com.backend.entity.Role;
 import com.backend.entity.Users;
 import com.backend.repositories.UserRepository;
-//import com.backend.services.P_Services;
 import com.backend.services.U_Service;
 
 import jakarta.servlet.http.HttpSession;
@@ -38,8 +36,8 @@ public class UserControl {
 	
 	@Autowired
 	private U_Service u_Service;
-//	@Autowired
-//	private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 //	
 //	
 //	public UserControl(U_Service u_Service) {
@@ -54,34 +52,36 @@ public class UserControl {
 //	
 ////	--------------------Show all User--------------------
 //
-//	@GetMapping
-//	public List<User> getAll() {
-//		return u_Service.getAll();
-//	}
+	@PreAuthorize("hasRole('ADMIN')")
+	@GetMapping
+	public List<Users> getAll() {
+		return u_Service.getAll();
+	}
 //	
 ////	--------------------Get by id one User--------------------
-//
-//	@GetMapping("/{id}")
-//	public User getOne(@PathVariable Integer id) {
-//		return u_Service.getOne(id);
-//	}
+	@PreAuthorize("hasRole('ADMIN')")
+	@GetMapping("/{id}")
+	public Users getOne(@PathVariable Integer id) {
+		return u_Service.getOne(id);
+	}
 //	
 //	
 ////	--------------------Delete User--------------------
-//
-//	@DeleteMapping("/{id}")
-//	public void delete(@PathVariable Integer id) {
-//		 u_Service.delete(id);
-//	}
+	@PreAuthorize("hasRole('ADMIN')")
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Integer id) {
+		 u_Service.delete(id);
+	}
 //
 //
 ////	------------------------Fetch the user count-------------------------------------
 //
-//	 @GetMapping("/count")
-//	    public long getUserCount() {
-//	        return userRepository.count();
-//	    }
-//	
+	@PreAuthorize("hasRole('ADMIN')")
+	 @GetMapping("/count")
+	    public long getUserCount() {
+	        return u_Service.getUserCount();
+	    }
+	
 //	
 ////	--------------------Login of User--------------------
 //
@@ -109,17 +109,6 @@ public class UserControl {
 ////	
 //	
 //	
-////	<!--=====================JWT========================================-->
-//	
-//	@PostMapping("/login2")
-//	public String verify(@RequestBody User user) {
-//		return u_Service.verify(user);
-//	}
-////	<!--==============================================================-->
-//	
-	
-//	@Autowired
-//	 private final U_Service userService;
 
 	    @PostMapping("/register")
 	    public ResponseEntity<?> register(@RequestBody Users request) {
@@ -127,15 +116,10 @@ public class UserControl {
 	        return ResponseEntity.ok("User registered successfully");
 	    }
 
-//	    @PostMapping("/login")
-//	    public ResponseEntity<> login(@RequestBody AuthRequest request) {
-//	        String token = userService.authenticate(request);
-//	        return ResponseEntity.ok(new AuthResponse(token));
-//	    }
+	    @PostMapping("/login")
+	    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+	        String token = u_Service.authenticate(request);
+	        return ResponseEntity.ok(new AuthResponse(token));
+	    }
 
-//	    @GetMapping("/me")
-//	    public ResponseEntity<?> getProfile(Authentication ) {
-//	        return ResponseEntity.ok(authentication.getPrinciauthenticationpal());
-//	    }
-//	}
 }

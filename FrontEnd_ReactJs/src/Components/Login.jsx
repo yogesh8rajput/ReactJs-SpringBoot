@@ -23,7 +23,7 @@ const logData={
   username,password
 }
         try {
-            const response = await axios.post("http://localhost:8090/user/login2", logData);
+            const response = await axios.post("http://localhost:8090/user/login", logData);
              if (response.status === 200){
 login();
 

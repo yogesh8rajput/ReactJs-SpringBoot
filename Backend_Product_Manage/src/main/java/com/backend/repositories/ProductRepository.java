@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.backend.entity.Products;
-import com.backend.entity.User;
 
 public interface ProductRepository extends CrudRepository<Products, Integer>,JpaRepository<Products, Integer> {
 

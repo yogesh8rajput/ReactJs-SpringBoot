@@ -20,12 +20,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.backend.entity.LoginRequest;
 import com.backend.entity.Products;
-import com.backend.entity.User;
 import com.backend.entity.Users;
 import com.backend.repositories.ProductRepository;
 import com.backend.repositories.UserRepository;
-//
+
 //@Service
 //public class U_Service {
 //	
@@ -56,39 +56,29 @@ import com.backend.repositories.UserRepository;
 //
 //
 //
-//	public List<User> getAll() {
-//		return (List<User>)userRepository.findAll();
-//	}
 //
-//	public User getOne(Integer id) {
-//		Optional<User> op = userRepository.findById(id);
-//		return op.get();
-//	}
 //
-//	public void delete(Integer id) {
-//		userRepository.deleteById(id);
-//	}
 ////	------------------------Fetch the user count-------------------------------------
 //
-////	 public long getUserCount() {
-////	        return userRepository.count();
-////	    }
+//	 public long getUserCount() {
+//	        return userRepository.count();
+//	    }
 //	
 ////	-------------------------For Login Authentication-------------------------------------
 //	
-////	public boolean authenticate(String username,String password) {
-////		User user = userRepository.findByUsername(username);
-////		
-////		if(!user.getUsername().equals(username)) {
-////			throw new UsernameNotFoundException("User doesn't exist in the database");
-////		}
-////		
-////		if (!bCryptPasswordEncoder.matches(password, user.getPasswordhash())) {
-////            throw  new BadCredentialsException("The password is incorrect");
-////        }
-////		
-////		return true;
-////	}
+//	public boolean authenticate(String username,String password) {
+//		User user = userRepository.findByUsername(username);
+//		
+//		if(!user.getUsername().equals(username)) {
+//			throw new UsernameNotFoundException("User doesn't exist in the database");
+//		}
+//		
+//		if (!bCryptPasswordEncoder.matches(password, user.getPasswordhash())) {
+//            throw  new BadCredentialsException("The password is incorrect");
+//        }
+//		
+//		return true;
+//	}
 ////	
 ////	<!--==============================================================-->
 //	
@@ -110,39 +100,68 @@ import com.backend.repositories.UserRepository;
 
 @Service
 public class U_Service implements UserDetailsService {
-
-    private final UserRepository userRepo = null;
-
+     @Autowired
+    private UserRepository userRepo;
+     @Autowired
+ 	JWTservice jwTservice;
+     
     public Users register(Users req) {
         Users user = new Users();
         user.setName(req.getName());
+        user.setCity(req.getCity());
         user.setEmail(req.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(req.getPassword()));
         user.setRole(req.getRole());
         return userRepo.save(user);
     }
 
-//    public String authenticate(AuthRequest req) {
-//        User user = userRepo.findByEmail(req.email)
-//                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-//
-//        if (!new BCryptPasswordEncoder().matches(req.password, user.getPassword())) {
-//            throw new BadCredentialsException("Invalid credentials");
-//        }
-//
+    public String authenticate(LoginRequest req) {
+        Users user = userRepo.findByEmail(req.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        if (!new BCryptPasswordEncoder().matches(req.getPassword(), user.getPassword())) {
+            throw new BadCredentialsException("Invalid credentials");
+        }
+
 //        return new JwtUtil().generateToken(user);
-//    }
+        return jwTservice.generateTokens(user.getEmail());
+//        return "success";
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Users user = userRepo.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
+        if (user.getRole() == null) {
+            throw new IllegalStateException("User has no role assigned");
+        }
         return new org.springframework.security.core.userdetails.User(
             user.getEmail(),
             user.getPassword(),
             List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()))
         );
     }
+    
+
+////------------------------Fetch the user count-------------------------------------
+//
+ public long getUserCount() {
+        return userRepo.count();
+    }
+///
+
+	public List<Users> getAll() {
+		return (List<Users>)userRepo.findAll();
+	}
+	
+	public Users getOne(Integer id) {
+		Optional<Users> op = userRepo.findById(id);
+		return op.get();
+	}
+
+	public void delete(Integer id) {
+		userRepo.deleteById(id);
+	}
+
 }
 

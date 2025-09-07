@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.backend.entity.Products;
-import com.backend.entity.User;
 import com.backend.repositories.ProductRepository;
 import com.backend.repositories.UserRepository;
 

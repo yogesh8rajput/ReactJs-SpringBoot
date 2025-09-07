@@ -11,8 +11,8 @@ import axios from "axios";
       //password  as per the datbase
         const configs = {
             API_URL: 'http://localhost:8090/',
-            API_USERNAME: 'aa',
-            API_PASSWORD: '12',
+            API_USERNAME: 'mikku@yahoo.com',
+            API_PASSWORD: 'mick',
           };
       config.auth = {
         username: configs.API_USERNAME,
