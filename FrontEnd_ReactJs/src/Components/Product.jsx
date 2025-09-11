@@ -17,10 +17,8 @@ const Product = () => {
           `http://localhost:8090/products/${product_id}`
         );
         setproducts(response.data);
-        //   console.log(response.data);
-        // if (response.data.image_name) {
         fetchImage();
-        // }
+      
       } catch (error) {
         console.log("error" + error);
         setiserror(true);
