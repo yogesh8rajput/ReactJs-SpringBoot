@@ -29,6 +29,8 @@ public class Customer {
 	private String name;
 	private String company;
 	private String industry;
+	private Long contact;
+	private String email;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-dd")
 	@CreationTimestamp
 	private LocalDate creationDate;
@@ -85,7 +87,23 @@ public class Customer {
 		this.creationDate = creationDate;
 	}
 
+	public Long getContact() {
+		return contact;
+	}
 
+	public void setContact(Long contact) {
+		this.contact = contact;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
 	
 	
 	

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,7 +25,7 @@ import com.backend.entity.LoginRequest;
 import com.backend.entity.Role;
 import com.backend.entity.Users;
 import com.backend.repositories.UserRepository;
-import com.backend.services.U_Service;
+import com.backend.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -35,21 +36,10 @@ public class UserControl {
 
 	
 	@Autowired
-	private U_Service u_Service;
+	private UserService u_Service;
 	@Autowired
 	private UserRepository userRepository;
-//	
-//	
-//	public UserControl(U_Service u_Service) {
-//		this.u_Service = u_Service;
-//	}
-////	--------------------Adding User--------------------
-//	@PostMapping("/register")
-//	public User add(@RequestBody User user) {
-//		
-//			return u_Service.add(user);
-//		}
-//	
+	
 ////	--------------------Show all User--------------------
 //
 	@PreAuthorize("hasRole('ADMIN')")
@@ -74,6 +64,16 @@ public class UserControl {
 	}
 //
 //
+//	
+////	--------------------Update User--------------------
+	@PreAuthorize("hasRole('ADMIN')")
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestBody Users user) {
+		u_Service.updateUser(id,user);
+		return ResponseEntity.ok("Updated successfully!");
+	}
+//
+//
 ////	------------------------Fetch the user count-------------------------------------
 //
 	@PreAuthorize("hasRole('ADMIN')")
@@ -82,32 +82,7 @@ public class UserControl {
 	        return u_Service.getUserCount();
 	    }
 	
-//	
-////	--------------------Login of User--------------------
-//
-////	@PostMapping("/login")
-////	public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest , HttpSession session) {
-////		
-////		try {
-////			
-////			boolean isauthenticated = u_Service.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
-////			
-////			if(isauthenticated) {
-////				session.setAttribute("user", loginRequest.getUsername());
-////				return ResponseEntity.ok("Login Successful!");
-////			}
-////			else {
-////				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid name or password");
-////
-////			}
-////		} 
-////			catch (Exception e) {
-////
-////		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occured");
-////}
-////	}
-////	
-//	
+////	--------------------Registration of User--------------------
 //	
 
 	    @PostMapping("/register")
@@ -115,6 +90,7 @@ public class UserControl {
 	        u_Service.register(request);
 	        return ResponseEntity.ok("User registered successfully");
 	    }
+////	--------------------Login of User--------------------
 
 	    @PostMapping("/login")
 	    public ResponseEntity<?> login(@RequestBody LoginRequest request) {

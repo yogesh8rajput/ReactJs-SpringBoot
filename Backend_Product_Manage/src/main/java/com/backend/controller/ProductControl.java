@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.backend.entity.Products;
-import com.backend.services.P_Services;
+import com.backend.services.ProductServices;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -36,9 +36,9 @@ public class ProductControl {
 
 	
 	@Autowired
-	P_Services p_Services;
+	ProductServices p_Services;
 	
-	public ProductControl(P_Services p_Services) {
+	public ProductControl(ProductServices p_Services) {
 		this.p_Services = p_Services;
 	}
 //	--------------------Adding Product--------------------
@@ -114,13 +114,6 @@ public class ProductControl {
 		}
 	}
 	
-	
-	//------------------Spring Security-----------------
-//    @GetMapping("/Security")
-//    public String Secure( HttpServletRequest request) {
-//        return "Welcome To Security"+request.getSession().getId();
-//    }
-//    
     
     
     

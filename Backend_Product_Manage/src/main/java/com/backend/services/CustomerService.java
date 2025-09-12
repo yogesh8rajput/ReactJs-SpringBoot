@@ -61,6 +61,8 @@ public class CustomerService {
 		customer.setIndustry(client.getIndustry());
 		if(client.getCompany()!=null)
 		customer.setCompany(client.getCompany());
+		if(client.getContact()!=null)
+			customer.setContact(client.getContact());
 		
 		
 		
