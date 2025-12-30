@@ -19,7 +19,7 @@ public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
     
-
+//user details 
     public SecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
